@@ -42,7 +42,6 @@
     <PackageReference Include="Serenity.Demo.BasicSamples" Version="8.6.0" />
     <!--#endif-->
   </ItemGroup>
-  <ItemGroup></ItemGroup>
   <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Condition="!Exists('node_modules\.bin\esbuild')">
     <Message Text="Installing NPM packages..." Importance="high" />
     <Exec Command="npm install" />
