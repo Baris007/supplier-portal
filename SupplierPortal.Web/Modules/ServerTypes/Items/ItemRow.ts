@@ -2,7 +2,7 @@
 
 export interface ItemRow {
     Id?: number;
-    ItemId?: number;
+    ItemCode?: number;
     ItemName?: string;
 }
 

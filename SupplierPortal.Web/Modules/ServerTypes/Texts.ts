@@ -75,11 +75,76 @@ namespace SupplierPortal.Texts {
             }
         }
 
+        namespace Item {
+
+            namespace Items {
+                export const Id: string;
+                export const ItemCode: string;
+                export const ItemName: string;
+            }
+
+            namespace Offers {
+                export const CompanyName: string;
+                export const Email: string;
+                export const Id: string;
+                export const ItemCode: string;
+                export const ItemId: string;
+                export const ItemItemName: string;
+                export const ItemName: string;
+                export const State: string;
+                export const SupplierCompanyName: string;
+                export const SupplierId: string;
+            }
+
+            namespace Supplier {
+                export const CompanyName: string;
+                export const Email: string;
+                export const Id: string;
+            }
+        }
+
         namespace Items {
 
             namespace Item {
                 export const Id: string;
+                export const ItemCode: string;
+                export const ItemName: string;
+            }
+        }
+
+        namespace Portal {
+
+            namespace Items {
+                export const Id: string;
+                export const ItemCode: string;
+                export const ItemName: string;
+            }
+
+            namespace Offers {
+                export const Amount: string;
+                export const CompanyName: string;
+                export const Email: string;
+                export const Id: string;
                 export const ItemId: string;
+                export const ItemItemName: string;
+                export const ItemName: string;
+                export const State: string;
+                export const SupplierCompanyName: string;
+                export const SupplierId: string;
+            }
+
+            namespace Supplier {
+                export const CompanyName: string;
+                export const Email: string;
+                export const Id: string;
+            }
+        }
+
+        namespace İtem {
+
+            namespace Items {
+                export const Id: string;
+                export const ItemCode: string;
                 export const ItemName: string;
             }
         }
@@ -190,8 +255,21 @@ namespace SupplierPortal.Texts {
                 UserPermission: {},
                 UserRole: {}
             },
+            Item: {
+                Items: {},
+                Offers: {},
+                Supplier: {}
+            },
             Items: {
                 Item: {}
+            },
+            Portal: {
+                Items: {},
+                Offers: {},
+                Supplier: {}
+            },
+            İtem: {
+                Items: {}
             }
         },
         Forms: {
