@@ -5436,26 +5436,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fırat\\.nuget\\packages\\": {}
+    "C:\\Users\\bdeni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fırat\\Repository\\SupplierPortal\\SupplierPortal.Web\\SupplierPortal.Web.csproj",
+      "projectUniqueName": "C:\\Users\\bdeni\\OneDrive\\Masaüstü\\supplier-portal\\SupplierPortal.Web\\SupplierPortal.Web.csproj",
       "projectName": "SupplierPortal.Web",
-      "projectPath": "C:\\Users\\Fırat\\Repository\\SupplierPortal\\SupplierPortal.Web\\SupplierPortal.Web.csproj",
-      "packagesPath": "C:\\Users\\Fırat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fırat\\Repository\\SupplierPortal\\SupplierPortal.Web\\obj\\",
+      "projectPath": "C:\\Users\\bdeni\\OneDrive\\Masaüstü\\supplier-portal\\SupplierPortal.Web\\SupplierPortal.Web.csproj",
+      "packagesPath": "C:\\Users\\bdeni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bdeni\\OneDrive\\Masaüstü\\supplier-portal\\SupplierPortal.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Fırat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bdeni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "http://packages.nuget.org/v1/FeedService.svc/": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -5544,16 +5545,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1803",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "'restore' işlemini 'http://packages.nuget.org/v1/FeedService.svc/' 'HTTP' kaynağı ile birlikte çalıştırıyorsunuz. HTTPS dışı erişim gelecek sürümlerde kaldırılacak. Bir 'HTTPS' kaynağına geçirmeyi deneyin."
-    }
-  ]
+  }
 }

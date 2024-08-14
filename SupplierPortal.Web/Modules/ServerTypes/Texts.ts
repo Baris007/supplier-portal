@@ -74,6 +74,15 @@ namespace SupplierPortal.Texts {
                 export const Username: string;
             }
         }
+
+        namespace Items {
+
+            namespace Item {
+                export const Id: string;
+                export const ItemId: string;
+                export const ItemName: string;
+            }
+        }
     }
 
     export declare namespace Forms {
@@ -180,6 +189,9 @@ namespace SupplierPortal.Texts {
                 User: {},
                 UserPermission: {},
                 UserRole: {}
+            },
+            Items: {
+                Item: {}
             }
         },
         Forms: {
