@@ -1,5 +1,5 @@
 using Serenity.ComponentModel;
-
+// Ali sorun yok 
 namespace SupplierPortal.Market.Forms;
 
 [FormScript("Market.Offer")]
