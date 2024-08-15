@@ -1,21 +1,18 @@
 ﻿import { fieldsProxy } from "@serenity-is/corelib";
+import { OfferDetailRow } from "./OfferDetailRow";
 
 export interface OfferRow {
     Id?: number;
-    Amount?: number;
-    ItemName?: string;
-    CompanyName?: string;
-    Email?: string;
-    State?: number[];
     ItemId?: number;
     SupplierId?: number;
-    ItemItemName?: string;
-    SupplierCompanyName?: string;
+    Email?: string;
+    State?: number;
+    Detail?: OfferDetailRow[];
 }
 
 export abstract class OfferRow {
     static readonly idProperty = 'Id';
-    static readonly nameProperty = 'ItemName';
+    static readonly nameProperty = 'Email';
     static readonly localTextPrefix = 'Market.Offer';
     static readonly deletePermission = 'Administration:General';
     static readonly insertPermission = 'Administration:General';

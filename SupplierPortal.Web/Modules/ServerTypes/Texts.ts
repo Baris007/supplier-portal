@@ -75,25 +75,32 @@ namespace SupplierPortal.Texts {
             }
         }
 
-        namespace Market {
+        namespace Inventory {
 
             namespace Item {
                 export const Id: string;
                 export const ItemCode: string;
                 export const ItemName: string;
             }
+        }
+
+        namespace Market {
 
             namespace Offer {
-                export const Amount: string;
-                export const CompanyName: string;
+                export const Detail: string;
                 export const Email: string;
                 export const Id: string;
                 export const ItemId: string;
-                export const ItemItemName: string;
-                export const ItemName: string;
                 export const State: string;
-                export const SupplierCompanyName: string;
                 export const SupplierId: string;
+            }
+
+            namespace OfferDetail {
+                export const Description: string;
+                export const Id: string;
+                export const OfferId: string;
+                export const Price: string;
+                export const Quantity: string;
             }
 
             namespace Supplier {
@@ -209,9 +216,12 @@ namespace SupplierPortal.Texts {
                 UserPermission: {},
                 UserRole: {}
             },
+            Inventory: {
+                Item: {}
+            },
             Market: {
-                Item: {},
                 Offer: {},
+                OfferDetail: {},
                 Supplier: {}
             }
         },
