@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿import { IntegerEditor, StringEditor, ServiceLookupEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface OfferForm {
@@ -8,6 +9,17 @@ export interface OfferForm {
     State: StringEditor;
     ItemId: ServiceLookupEditor;
     SupplierId: ServiceLookupEditor;
+=======
+﻿import { IntegerEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+
+export interface OfferForm {
+    ItemId: IntegerEditor;
+    SupplierId: IntegerEditor;
+    Email: StringEditor;
+    State: IntegerEditor;
+    Detail: StringEditor;
+    Id: IntegerEditor;
+>>>>>>> Zeki
 }
 
 export class OfferForm extends PrefixedContext {
@@ -22,6 +34,7 @@ export class OfferForm extends PrefixedContext {
 
             var w0 = IntegerEditor;
             var w1 = StringEditor;
+<<<<<<< HEAD
             var w2 = ServiceLookupEditor;
 
             initFormType(OfferForm, [
@@ -32,6 +45,16 @@ export class OfferForm extends PrefixedContext {
                 'State', w1,
                 'ItemId', w2,
                 'SupplierId', w2
+=======
+
+            initFormType(OfferForm, [
+                'ItemId', w0,
+                'SupplierId', w0,
+                'Email', w1,
+                'State', w0,
+                'Detail', w1,
+                'Id', w0
+>>>>>>> Zeki
             ]);
         }
     }
