@@ -7,12 +7,8 @@ namespace SupplierPortal.Market.Forms;
 [BasedOnRow(typeof(OfferDetailRow), CheckNames = true)]
 public class OfferDetailForm
 {
-    public int OfferId { get; set; }
-    public decimal Quantity { get; set; }
     public string Description { get; set; }
+    public decimal Quantity { get; set; }
     public decimal Price { get; set; }
-
-    [Visible(false)]
-    public int Id { get; set; }
     
 }

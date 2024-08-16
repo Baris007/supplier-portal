@@ -22,6 +22,7 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
     [DisplayName("Quantity"), Size(18), Scale(2)]
     public decimal? Quantity { get => fields.Quantity[this]; set => fields.Quantity[this] = value; }
 
+
     [DisplayName("Description"), Size(500), QuickSearch, NameProperty]
     public string Description { get => fields.Description[this]; set => fields.Description[this] = value; }
     

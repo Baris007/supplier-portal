@@ -9,6 +9,7 @@ public class OfferForm
     public int SupplierId { get; set; }
     public string Email { get; set; }
     public short State { get; set; }
+    [OfferDetailEditor]
     public List<OfferDetailRow> Detail { get; set; }
 
     [Visible(false)]
