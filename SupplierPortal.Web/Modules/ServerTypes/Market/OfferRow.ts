@@ -1,8 +1,10 @@
 ﻿import { fieldsProxy } from "@serenity-is/corelib";
 import { OfferDetailRow } from "./OfferDetailRow";
+import { SupplierRow } from "./SupplierRow";
 
 export interface OfferRow {
     Id?: number;
+    Supplier?: SupplierRow[];
     ItemId?: number;
     SupplierId?: number;
     Email?: string;
