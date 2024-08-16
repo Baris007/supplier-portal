@@ -92,6 +92,7 @@ namespace SupplierPortal.Texts {
                 export const Id: string;
                 export const ItemId: string;
                 export const State: string;
+                export const Supplier: string;
                 export const SupplierId: string;
             }
 

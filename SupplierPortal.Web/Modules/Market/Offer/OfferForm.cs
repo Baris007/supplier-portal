@@ -12,6 +12,7 @@ namespace SupplierPortal.Market.Forms;
 [BasedOnRow(typeof(OfferRow), CheckNames = true)]
 public class OfferForm
 {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     public short Amount { get; set; }
     public string ItemName { get; set; }
@@ -21,6 +22,10 @@ public class OfferForm
     public int ItemId { get; set; }
     public int SupplierId { get; set; }
 =======
+=======
+    [SupplierEditor]
+    public List<SupplierRow> Supplier { get; set; }
+>>>>>>> Stashed changes
     public int ItemId { get; set; }
     public int SupplierId { get; set; }
     public string Email { get; set; }

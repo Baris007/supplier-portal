@@ -59,6 +59,9 @@ public sealed class OfferRow : Row<OfferRow.RowFields>, IIdRow, INameRow
     [DisplayName("Id"), Identity, IdProperty]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
+    [DisplayName("Supplier"), MasterDetailRelation("CompanyName")]
+    public List<SupplierRow> Supplier { get => fields.Supplier[this]; set => fields.Supplier[this] = value; }
+
     [DisplayName("Item Id"), NotNull]
     public int? ItemId { get => fields.ItemId[this]; set => fields.ItemId[this] = value; }
 
@@ -78,6 +81,7 @@ public sealed class OfferRow : Row<OfferRow.RowFields>, IIdRow, INameRow
     public class RowFields : RowFieldsBase
     {
         public Int32Field Id;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         public Int16Field Amount;
         public StringField ItemName;
@@ -90,6 +94,9 @@ public sealed class OfferRow : Row<OfferRow.RowFields>, IIdRow, INameRow
         public StringField ItemItemName;
         public StringField SupplierCompanyName;
 =======
+=======
+        public RowListField<SupplierRow> Supplier;
+>>>>>>> Stashed changes
         public Int32Field ItemId;
         public Int32Field SupplierId;
         public StringField Email;

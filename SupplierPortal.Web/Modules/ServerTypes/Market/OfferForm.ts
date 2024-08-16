@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 ﻿import { IntegerEditor, StringEditor, ServiceLookupEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
@@ -11,8 +12,14 @@ export interface OfferForm {
     SupplierId: ServiceLookupEditor;
 =======
 ﻿import { IntegerEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+=======
+﻿import { OfferDetailEditor } from "@/Market/OfferDetail/OfferDetailEditor";
+import { SupplierEditor } from "@/Market/Supplier/SupplierEditor";
+import { IntegerEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+>>>>>>> Stashed changes
 
 export interface OfferForm {
+    Supplier: SupplierEditor;
     ItemId: IntegerEditor;
     SupplierId: IntegerEditor;
     Email: StringEditor;
@@ -32,6 +39,7 @@ export class OfferForm extends PrefixedContext {
         if (!OfferForm.init)  {
             OfferForm.init = true;
 
+<<<<<<< Updated upstream
             var w0 = IntegerEditor;
             var w1 = StringEditor;
 <<<<<<< HEAD
@@ -55,6 +63,21 @@ export class OfferForm extends PrefixedContext {
                 'Detail', w1,
                 'Id', w0
 >>>>>>> Zeki
+=======
+            var w0 = SupplierEditor;
+            var w1 = IntegerEditor;
+            var w2 = StringEditor;
+            var w3 = OfferDetailEditor;
+
+            initFormType(OfferForm, [
+                'Supplier', w0,
+                'ItemId', w1,
+                'SupplierId', w1,
+                'Email', w2,
+                'State', w1,
+                'Detail', w3,
+                'Id', w1
+>>>>>>> Stashed changes
             ]);
         }
     }
