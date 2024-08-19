@@ -14,17 +14,16 @@ public sealed class OfferRow : Row<OfferRow.RowFields>, IIdRow, INameRow
 {
     [DisplayName("Id"), Identity, IdProperty]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
-
-    [DisplayName("Supplier"), MasterDetailRelation("CompanyName")]
+    [DisplayName("Supplier"), MasterDetailRelation("Id")]
     public List<SupplierRow> Supplier { get => fields.Supplier[this]; set => fields.Supplier[this] = value; }
 
-    [DisplayName("Item Id"), NotNull]
+    [DisplayName("Item Id")]
     public int? ItemId { get => fields.ItemId[this]; set => fields.ItemId[this] = value; }
 
-    [DisplayName("Supplier Id"), NotNull]
+    [DisplayName("Supplier Id")]
     public int? SupplierId { get => fields.SupplierId[this]; set => fields.SupplierId[this] = value; }
 
-    [DisplayName("Email"), Size(50), NotNull, QuickSearch, NameProperty]
+    [DisplayName("Email"), Size(50), QuickSearch, NameProperty]
     public string Email { get => fields.Email[this]; set => fields.Email[this] = value; }
 
     [DisplayName("State")]
@@ -42,5 +41,6 @@ public sealed class OfferRow : Row<OfferRow.RowFields>, IIdRow, INameRow
         public StringField Email;
         public Int16Field State;
         public RowListField<OfferDetailRow> Detail;
+
     }
 }

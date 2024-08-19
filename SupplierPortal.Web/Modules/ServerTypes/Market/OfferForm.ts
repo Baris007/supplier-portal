@@ -9,7 +9,6 @@ export interface OfferForm {
     Email: StringEditor;
     State: IntegerEditor;
     Detail: OfferDetailEditor;
-    Id: IntegerEditor;
 }
 
 export class OfferForm extends PrefixedContext {
@@ -33,8 +32,7 @@ export class OfferForm extends PrefixedContext {
                 'SupplierId', w1,
                 'Email', w2,
                 'State', w1,
-                'Detail', w3,
-                'Id', w1
+                'Detail', w3
             ]);
         }
     }
