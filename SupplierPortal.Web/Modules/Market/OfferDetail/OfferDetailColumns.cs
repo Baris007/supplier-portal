@@ -1,5 +1,4 @@
-using Serenity.ComponentModel;
-using System;
+﻿using Serenity.ComponentModel;
 using System.ComponentModel;
 
 namespace SupplierPortal.Market.Columns;
@@ -14,6 +13,7 @@ public class OfferDetailColumns
     public decimal Quantity { get; set; }
     [EditLink]
     public string Description { get; set; }
-  
     public decimal Price { get; set; }
+    public int ItemId { get; set; }
+    public string Curency { get; set; }
 }

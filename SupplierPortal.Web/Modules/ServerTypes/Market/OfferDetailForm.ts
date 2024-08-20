@@ -1,9 +1,12 @@
-﻿import { StringEditor, DecimalEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { IntegerEditor, DecimalEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface OfferDetailForm {
-    Description: StringEditor;
+    OfferId: IntegerEditor;
     Quantity: DecimalEditor;
+    Description: StringEditor;
     Price: DecimalEditor;
+    ItemId: IntegerEditor;
+    Curency: StringEditor;
 }
 
 export class OfferDetailForm extends PrefixedContext {
@@ -16,13 +19,17 @@ export class OfferDetailForm extends PrefixedContext {
         if (!OfferDetailForm.init)  {
             OfferDetailForm.init = true;
 
-            var w0 = StringEditor;
+            var w0 = IntegerEditor;
             var w1 = DecimalEditor;
+            var w2 = StringEditor;
 
             initFormType(OfferDetailForm, [
-                'Description', w0,
+                'OfferId', w0,
                 'Quantity', w1,
-                'Price', w1
+                'Description', w2,
+                'Price', w1,
+                'ItemId', w0,
+                'Curency', w2
             ]);
         }
     }

@@ -1,7 +1,6 @@
-using Serenity.ComponentModel;
+﻿using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
-using System;
 using System.ComponentModel;
 
 namespace SupplierPortal.Market;
@@ -22,13 +21,17 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
     [DisplayName("Quantity"), Size(18), Scale(2)]
     public decimal? Quantity { get => fields.Quantity[this]; set => fields.Quantity[this] = value; }
 
-
     [DisplayName("Description"), Size(500), QuickSearch, NameProperty]
     public string Description { get => fields.Description[this]; set => fields.Description[this] = value; }
-    
 
     [DisplayName("Price"), Size(18), Scale(5)]
     public decimal? Price { get => fields.Price[this]; set => fields.Price[this] = value; }
+
+    [DisplayName("Item Id")]
+    public int? ItemId { get => fields.ItemId[this]; set => fields.ItemId[this] = value; }
+
+    [DisplayName("Curency"), Size(3)]
+    public string Curency { get => fields.Curency[this]; set => fields.Curency[this] = value; }
 
     public class RowFields : RowFieldsBase
     {
@@ -36,8 +39,9 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
         public Int32Field OfferId;
         public DecimalField Quantity;
         public StringField Description;
-        
         public DecimalField Price;
+        public Int32Field ItemId;
+        public StringField Curency;
 
     }
 }

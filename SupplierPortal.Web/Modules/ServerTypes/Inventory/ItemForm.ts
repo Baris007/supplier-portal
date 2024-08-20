@@ -1,7 +1,7 @@
-﻿import { IntegerEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface ItemForm {
-    ItemCode: IntegerEditor;
+    ItemCode: StringEditor;
     ItemName: StringEditor;
 }
 
@@ -15,12 +15,11 @@ export class ItemForm extends PrefixedContext {
         if (!ItemForm.init)  {
             ItemForm.init = true;
 
-            var w0 = IntegerEditor;
-            var w1 = StringEditor;
+            var w0 = StringEditor;
 
             initFormType(ItemForm, [
                 'ItemCode', w0,
-                'ItemName', w1
+                'ItemName', w0
             ]);
         }
     }

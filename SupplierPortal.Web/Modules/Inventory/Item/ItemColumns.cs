@@ -1,4 +1,4 @@
-using Serenity.ComponentModel;
+﻿using Serenity.ComponentModel;
 using System.ComponentModel;
 
 namespace SupplierPortal.Inventory.Columns;
@@ -9,7 +9,7 @@ public class ItemColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int Id { get; set; }
-    public short ItemCode { get; set; }
     [EditLink]
+    public string ItemCode { get; set; }
     public string ItemName { get; set; }
 }

@@ -8,6 +8,8 @@ export interface OfferDetailColumns {
     Quantity: Column<OfferDetailRow>;
     Description: Column<OfferDetailRow>;
     Price: Column<OfferDetailRow>;
+    ItemId: Column<OfferDetailRow>;
+    Curency: Column<OfferDetailRow>;
 }
 
 export class OfferDetailColumns extends ColumnsBase<OfferDetailRow> {
