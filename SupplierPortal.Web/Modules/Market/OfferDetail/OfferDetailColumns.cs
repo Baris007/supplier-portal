@@ -1,4 +1,5 @@
 ﻿using Serenity.ComponentModel;
+using System;
 using System.ComponentModel;
 
 namespace SupplierPortal.Market.Columns;
@@ -11,9 +12,11 @@ public class OfferDetailColumns
     public int Id { get; set; }
     public int OfferId { get; set; }
     public decimal Quantity { get; set; }
+    public decimal Price { get; set; }
     [EditLink]
     public string Description { get; set; }
-    public decimal Price { get; set; }
     public int ItemId { get; set; }
     public string Curency { get; set; }
+    public DateTime Date { get; set; }
+    public decimal TotalPrice { get; set; }
 }

@@ -2,6 +2,7 @@
 
 export interface OfferSupplierRow {
     Id?: number;
+    CompanyName?: string;
     SupplierId?: number;
     OfferId?: number;
 }

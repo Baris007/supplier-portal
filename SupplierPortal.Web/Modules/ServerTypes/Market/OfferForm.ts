@@ -1,9 +1,9 @@
 ﻿import { OfferDetailEditor } from "@/Market/OfferDetail/OfferDetailEditor";
-import { SupplierEditor } from "@/Market/Supplier/SupplierEditor";
+import { OfferSupplierEditor } from "@/Market/OfferSupplier/OfferSupplierEditor";
 import { IntegerEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface OfferForm {
-    Supplier: SupplierEditor;
+    OfferSupplier: OfferSupplierEditor;
     State: IntegerEditor;
     Detail: OfferDetailEditor;
 }
@@ -18,12 +18,12 @@ export class OfferForm extends PrefixedContext {
         if (!OfferForm.init)  {
             OfferForm.init = true;
 
-            var w0 = SupplierEditor;
+            var w0 = OfferSupplierEditor;
             var w1 = IntegerEditor;
             var w2 = OfferDetailEditor;
 
             initFormType(OfferForm, [
-                'Supplier', w0,
+                'OfferSupplier', w0,
                 'State', w1,
                 'Detail', w2
             ]);

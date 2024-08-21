@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -21,11 +21,15 @@ public sealed class ItemRow : Row<ItemRow.RowFields>, IIdRow, INameRow
     [DisplayName("Item Name"), Size(50), NotNull]
     public string ItemName { get => fields.ItemName[this]; set => fields.ItemName[this] = value; }
 
+
+
+
     public class RowFields : RowFieldsBase
     {
         public Int32Field Id;
         public StringField ItemCode;
         public StringField ItemName;
+
 
     }
 }
