@@ -10,10 +10,10 @@ public class OfferDetailColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int Id { get; set; }
-    public int OfferId { get; set; }
+    public string OfferEmail { get; set; }
     public decimal Quantity { get; set; }
     [EditLink]
     public string Description { get; set; }
-  
+    public DateTime StatusDate { get; set; }
     public decimal Price { get; set; }
 }

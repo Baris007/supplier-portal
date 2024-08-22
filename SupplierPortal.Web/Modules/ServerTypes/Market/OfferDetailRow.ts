@@ -5,7 +5,9 @@ export interface OfferDetailRow {
     OfferId?: number;
     Quantity?: number;
     Description?: string;
+    StatusDate?: string;
     Price?: number;
+    OfferEmail?: string;
 }
 
 export abstract class OfferDetailRow {

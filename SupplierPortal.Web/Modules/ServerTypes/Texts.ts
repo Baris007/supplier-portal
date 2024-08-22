@@ -98,9 +98,11 @@ namespace SupplierPortal.Texts {
             namespace OfferDetail {
                 export const Description: string;
                 export const Id: string;
+                export const OfferEmail: string;
                 export const OfferId: string;
                 export const Price: string;
                 export const Quantity: string;
+                export const StatusDate: string;
             }
 
             namespace Supplier {

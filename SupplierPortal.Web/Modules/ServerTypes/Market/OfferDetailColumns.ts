@@ -4,9 +4,10 @@ import { OfferDetailRow } from "./OfferDetailRow";
 
 export interface OfferDetailColumns {
     Id: Column<OfferDetailRow>;
-    OfferId: Column<OfferDetailRow>;
+    OfferEmail: Column<OfferDetailRow>;
     Quantity: Column<OfferDetailRow>;
     Description: Column<OfferDetailRow>;
+    StatusDate: Column<OfferDetailRow>;
     Price: Column<OfferDetailRow>;
 }
 
