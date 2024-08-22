@@ -1,7 +1,8 @@
 import { OfferColumns, OfferRow, OfferService } from '@/ServerTypes/Market';
 import { Decorators, EntityGrid, text, tryGetText } from '@serenity-is/corelib';
 import { OfferDialog } from './OfferDialog';
-
+import { ReportHelper } from '../../_Ext/Reporting/ReportHelper';
+import { FormatterContext } from '@serenity-is/sleekgrid';
 @Decorators.registerClass('SupplierPortal.Market.OfferGrid')
 export class OfferGrid extends EntityGrid<OfferRow> {
     protected getColumnsKey() { return OfferColumns.columnsKey; }
@@ -45,12 +46,12 @@ export class OfferGrid extends EntityGrid<OfferRow> {
         if (target.hasClass('inline-action')) {
             e.preventDefault();
             if (target.hasClass('print-invoice')) {
-                //ReportHelper.executeBoldReport({
-                //    reportName: "teklif",
-                //    fileName: "teklif",
-                //    extension: 'PDF',
-                //    paramNameValues: { Id: item.Id.toString() }
-                //});
+                ReportHelper.executeBoldReport({
+                    reportName: "teklif",
+                    fileName: "teklif",
+                    extension: 'PDF',
+                    paramNameValues: { Id: item.Id.toString() }
+                });
             }
 
         }

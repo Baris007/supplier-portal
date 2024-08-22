@@ -24,6 +24,8 @@
     <Using Include="System.Data.IDbConnection" Alias="IDbConnection" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Bold.Licensing" Version="6.2.33" />
+    <PackageReference Include="BoldReports.Net.Core" Version="6.2.33" />
     <PackageReference Include="EPPlus" Version="7.2.2" />
     <PackageReference Include="FluentMigrator.Runner" Version="5.2.0" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.7" />
