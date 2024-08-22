@@ -9,9 +9,5 @@ public class OfferColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int Id { get; set; }
-    public int ItemId { get; set; }
-    public int SupplierId { get; set; }
-    [EditLink]
-    public string Email { get; set; }
     public short State { get; set; }
 }

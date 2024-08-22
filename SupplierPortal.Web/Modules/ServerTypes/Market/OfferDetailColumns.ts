@@ -7,8 +7,9 @@ export interface OfferDetailColumns {
     OfferEmail: Column<OfferDetailRow>;
     Quantity: Column<OfferDetailRow>;
     Description: Column<OfferDetailRow>;
-    StatusDate: Column<OfferDetailRow>;
     Price: Column<OfferDetailRow>;
+    ItemId: Column<OfferDetailRow>;
+    Curency: Column<OfferDetailRow>;
 }
 
 export class OfferDetailColumns extends ColumnsBase<OfferDetailRow> {

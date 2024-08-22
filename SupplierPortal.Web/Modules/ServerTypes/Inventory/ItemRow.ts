@@ -2,13 +2,13 @@
 
 export interface ItemRow {
     Id?: number;
-    ItemCode?: number;
+    ItemCode?: string;
     ItemName?: string;
 }
 
 export abstract class ItemRow {
     static readonly idProperty = 'Id';
-    static readonly nameProperty = 'ItemName';
+    static readonly nameProperty = 'ItemCode';
     static readonly localTextPrefix = 'Inventory.Item';
     static readonly deletePermission = 'Administration:General';
     static readonly insertPermission = 'Administration:General';

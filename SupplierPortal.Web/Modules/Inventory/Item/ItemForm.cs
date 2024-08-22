@@ -1,4 +1,4 @@
-using Serenity.ComponentModel;
+﻿using Serenity.ComponentModel;
 
 namespace SupplierPortal.Inventory.Forms;
 
@@ -6,6 +6,6 @@ namespace SupplierPortal.Inventory.Forms;
 [BasedOnRow(typeof(ItemRow), CheckNames = true)]
 public class ItemForm
 {
-    public short ItemCode { get; set; }
+    public string ItemCode { get; set; }
     public string ItemName { get; set; }
 }

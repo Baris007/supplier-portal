@@ -1,5 +1,4 @@
-using Serenity.ComponentModel;
-using System;
+﻿using Serenity.ComponentModel;
 
 namespace SupplierPortal.Market.Forms;
 
@@ -10,7 +9,7 @@ public class OfferDetailForm
     public int OfferId { get; set; }
     public decimal Quantity { get; set; }
     public string Description { get; set; }
-    public DateTime StatusDate { get; set; }
     public decimal Price { get; set; }
-    
+    public int ItemId { get; set; }
+    public string Curency { get; set; }
 }
