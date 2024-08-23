@@ -22,6 +22,7 @@ public sealed class SupplierRow : Row<SupplierRow.RowFields>, IIdRow, INameRow
     [DisplayName("Email"), Size(50), NotNull]
     public string Email { get => fields.Email[this]; set => fields.Email[this] = value; }
 
+
     public class RowFields : RowFieldsBase
     {
         public Int32Field Id;

@@ -2,10 +2,10 @@
 
 export interface OfferDetailForm {
     OfferId: IntegerEditor;
+    ItemId: IntegerEditor;
     Quantity: DecimalEditor;
     Price: DecimalEditor;
     Description: StringEditor;
-    ItemId: IntegerEditor;
     Curency: StringEditor;
     Date: DateEditor;
     TotalPrice: DecimalEditor;
@@ -28,10 +28,10 @@ export class OfferDetailForm extends PrefixedContext {
 
             initFormType(OfferDetailForm, [
                 'OfferId', w0,
+                'ItemId', w0,
                 'Quantity', w1,
                 'Price', w1,
                 'Description', w2,
-                'ItemId', w0,
                 'Curency', w2,
                 'Date', w3,
                 'TotalPrice', w1

@@ -1,6 +1,7 @@
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
+using SupplierPortal.Market.Columns;
 using System.ComponentModel;
 
 namespace SupplierPortal.Market;

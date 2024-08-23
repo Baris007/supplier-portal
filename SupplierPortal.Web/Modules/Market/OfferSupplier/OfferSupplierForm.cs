@@ -7,5 +7,6 @@ namespace SupplierPortal.Market.Forms;
 public class OfferSupplierForm
 {
     public int SupplierId { get; set; }
+    [Visible(false)]
     public int OfferId { get; set; }
 }

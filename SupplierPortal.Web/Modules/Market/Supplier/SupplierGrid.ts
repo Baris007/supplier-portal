@@ -8,4 +8,8 @@ export class SupplierGrid extends EntityGrid<SupplierRow> {
     protected getDialogType() { return SupplierDialog; }
     protected getRowDefinition() { return SupplierRow; }
     protected getService() { return SupplierService.baseUrl; }
+
+    protected getAddButtonCaption() {
+        return "Add New Supplier";
+    }
 }

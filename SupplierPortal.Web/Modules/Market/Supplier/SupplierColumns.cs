@@ -8,7 +8,6 @@ namespace SupplierPortal.Market.Columns;
 public class SupplierColumns
 {
     public int Id { get; set; }
-    [EditLink]
     public string CompanyName { get; set; }
     public string Email { get; set; }
 }

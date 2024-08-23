@@ -1,8 +1,9 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
 using System.ComponentModel;
+using static Serenity.Demo.Northwind.MVC.Views;
 
 namespace SupplierPortal.Market;
 
@@ -11,8 +12,10 @@ namespace SupplierPortal.Market;
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 [ServiceLookupPermission("Administration:General")]
+[LookupScript]
 public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INameRow
 {
+    const string jItem = nameof(jItem);
     [DisplayName("Id"), Identity, IdProperty]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
@@ -30,6 +33,8 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
 
     [DisplayName("Item Id")]
     public int? ItemId { get => fields.ItemId[this]; set => fields.ItemId[this] = value; }
+    //[DisplayName("Item Name"), Origin(jItem, nameof(ItemRow.ItemName))]
+    //public string ItemName { get => fields.ItemName[this]; set => fields.ItemName[this] = value; }
 
     [DisplayName("Curency"), Size(3)]
     public string Curency { get => fields.Curency[this]; set => fields.Curency[this] = value; }

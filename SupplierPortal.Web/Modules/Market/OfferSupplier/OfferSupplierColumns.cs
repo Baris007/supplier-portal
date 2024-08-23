@@ -8,8 +8,10 @@ namespace SupplierPortal.Market.Columns;
 public class OfferSupplierColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-    public int Id { get; set; }
-    public string CompanyName { get; set; }
+
+    [Visible(false)]
+    public int Id { get; set; } 
     public int SupplierId { get; set; }
+    [Visible(false)]
     public int OfferId { get; set; }
 }

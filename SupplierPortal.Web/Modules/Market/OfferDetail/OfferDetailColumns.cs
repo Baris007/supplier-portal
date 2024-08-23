@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System;
 using System.ComponentModel;
 
@@ -9,8 +9,11 @@ namespace SupplierPortal.Market.Columns;
 public class OfferDetailColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    [Visible(false)]
     public int Id { get; set; }
+    [Visible(false)]
     public int OfferId { get; set; }
+    public string ItemName { get; set; }
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
     [EditLink]

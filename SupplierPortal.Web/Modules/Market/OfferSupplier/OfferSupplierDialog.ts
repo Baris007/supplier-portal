@@ -8,5 +8,5 @@ export class OfferSupplierDialog extends EntityDialog<OfferSupplierRow> {
     protected getRowDefinition() { return OfferSupplierRow; }
     protected getService() { return OfferSupplierService.baseUrl; }
 
-    protected form = new OfferSupplierForm(this.idPrefix);
+    protected form: OfferSupplierForm = new OfferSupplierForm(this.idPrefix);
 }

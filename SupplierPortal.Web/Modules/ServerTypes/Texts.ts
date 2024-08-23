@@ -106,7 +106,6 @@ namespace SupplierPortal.Texts {
             }
 
             namespace OfferSupplier {
-                export const CompanyName: string;
                 export const Id: string;
                 export const OfferId: string;
                 export const SupplierId: string;
