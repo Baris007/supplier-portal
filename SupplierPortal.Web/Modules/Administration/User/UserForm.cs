@@ -1,4 +1,4 @@
-﻿namespace SupplierPortal.Administration.Forms;
+namespace SupplierPortal.Administration.Forms;
 
 [FormScript("Administration.User")]
 [BasedOnRow(typeof(UserRow), CheckNames = true)]
