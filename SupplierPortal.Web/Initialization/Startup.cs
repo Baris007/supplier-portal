@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Serenity.Extensions.DependencyInjection;
 using Serenity.Localization;
@@ -92,6 +94,27 @@ public partial class Startup
             loggingBuilder.AddDebug();
         });
 
+        services.AddAuthentication(configureOptions: options =>
+        {
+            //options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            //options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidateActor = true,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                RequireExpirationTime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = Configuration.GetSection("Jwt:Issuer").Value,
+                ValidAudience = Configuration.GetSection("Jwt:Audience").Value,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("Jwt:Key").Value)),
+            };
+        });
+
         services.AddSingleton<IDataMigrations, AppServices.DataMigrations>();
         services.AddSingleton<IElevationHandler, DefaultElevationHandler>();
         services.AddSingleton<IEmailSender, EmailSender>();
@@ -112,6 +135,7 @@ public partial class Startup
         services.AddScriptBundling();
         services.AddUploadStorage();
         services.AddReporting();
+        services.AddControllersWithViews();
     }
 
     public static void InitializeLocalTexts(IServiceProvider services)
@@ -162,6 +186,16 @@ public partial class Startup
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+        });
 
         ConfigureTestPipeline?.Invoke(app);
 
