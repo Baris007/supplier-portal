@@ -10,6 +10,7 @@ export interface OfferDetailRow {
     Curency?: string;
     Date?: string;
     TotalPrice?: number;
+    ItemName?: string;
 }
 
 export abstract class OfferDetailRow {

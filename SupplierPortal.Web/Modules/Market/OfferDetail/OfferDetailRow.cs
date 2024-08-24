@@ -1,6 +1,7 @@
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
+using SupplierPortal.Inventory;
 using System;
 using System.ComponentModel;
 using static Serenity.Demo.Northwind.MVC.Views;
@@ -14,8 +15,7 @@ namespace SupplierPortal.Market;
 [ServiceLookupPermission("Administration:General")]
 [LookupScript]
 public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INameRow
-{
-    const string jItem = nameof(jItem);
+{ 
     [DisplayName("Id"), Identity, IdProperty]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
@@ -31,10 +31,10 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
     [DisplayName("Description"), Size(500), QuickSearch, NameProperty]
     public string Description { get => fields.Description[this]; set => fields.Description[this] = value; }
 
-    [DisplayName("Item Id")]
+    [DisplayName("Item Id"), ForeignKey("Item","Id"), LeftJoin("JItem")]
     public int? ItemId { get => fields.ItemId[this]; set => fields.ItemId[this] = value; }
-    //[DisplayName("Item Name"), Origin(jItem, nameof(ItemRow.ItemName))]
-    //public string ItemName { get => fields.ItemName[this]; set => fields.ItemName[this] = value; }
+    [DisplayName("Item Name"), Expression("JItem.[ItemName]")]
+    public string ItemName { get => fields.ItemName[this]; set => fields.ItemName[this] = value; }
 
     [DisplayName("Curency"), Size(3)]
     public string Curency { get => fields.Curency[this]; set => fields.Curency[this] = value; }
@@ -42,7 +42,7 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
     [DisplayName("Date"), Column("Date_")]
     public DateTime? Date { get => fields.Date[this]; set => fields.Date[this] = value; }
 
-    [DisplayName("Total Price"), Size(37), Scale(7)]
+    [DisplayName("Total Price"), Size(37), Scale(2)]
     public decimal? TotalPrice { get => fields.TotalPrice[this]; set => fields.TotalPrice[this] = value; }
 
     public class RowFields : RowFieldsBase
@@ -56,6 +56,7 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
         public StringField Curency;
         public DateTimeField Date;
         public DecimalField TotalPrice;
+        public StringField ItemName;
 
     }
 }

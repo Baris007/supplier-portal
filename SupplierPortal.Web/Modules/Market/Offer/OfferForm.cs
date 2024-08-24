@@ -11,6 +11,6 @@ public class OfferForm
 
     public short State { get; set; }
 
-    //[DisplayName("Detail"), OfferDetailEditor, IgnoreName]
-    //public List<OfferDetailRow> Detail { get; set; }
+    [DisplayName("Detail"), OfferDetailEditor, IgnoreName]
+    public List<OfferDetailRow> Detail { get; set; }
 }
