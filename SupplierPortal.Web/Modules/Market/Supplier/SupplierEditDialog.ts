@@ -6,7 +6,7 @@ import { GridEditorDialog } from '@serenity-is/extensions';
 export class SupplierDialog extends GridEditorDialog<SupplierRow> {
     protected getFormKey() { return SupplierForm.formKey; }
     protected getRowDefinition() { return SupplierRow; }
-    //protected getService() { return SupplierService.baseUrl; }
+    protected getService() { return SupplierService.baseUrl; }
 
     protected form = new SupplierForm(this.idPrefix);
 }

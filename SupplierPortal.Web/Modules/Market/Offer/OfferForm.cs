@@ -6,9 +6,11 @@ namespace SupplierPortal.Market.Forms;
 [BasedOnRow(typeof(OfferRow), CheckNames = true)]
 public class OfferForm
 {
-    [SupplierEditor]
-    public List<SupplierRow> Supplier { get; set; }
+    [DisplayName("OfferSupplier"), OfferSupplierEditor, IgnoreName]
+    public List<OfferSupplierRow> OfferSupplier { get; set; }
+
     public short State { get; set; }
-    [OfferDetailEditor]
-    public List<OfferDetailRow> Detail { get; set; }
+
+    //[DisplayName("Detail"), OfferDetailEditor, IgnoreName]
+    //public List<OfferDetailRow> Detail { get; set; }
 }

@@ -9,12 +9,15 @@ namespace SupplierPortal.Market;
 [DisplayName("Offer Supplier"), InstanceName("Offer Supplier")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed class OfferSupplierRow : Row<OfferSupplierRow.RowFields>, IIdRow
 {
+    const string jSupplier = nameof(jSupplier);
     [DisplayName("Id"), Identity, IdProperty]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
-    [DisplayName("Supplier Id")]
+    [DisplayName("Company Name"), ForeignKey(typeof(SupplierRow))]
+    [LookupEditor(typeof(SupplierRow), Async = true)]
     public int? SupplierId { get => fields.SupplierId[this]; set => fields.SupplierId[this] = value; }
 
     [DisplayName("Offer Id")]
@@ -25,6 +28,5 @@ public sealed class OfferSupplierRow : Row<OfferSupplierRow.RowFields>, IIdRow
         public Int32Field Id;
         public Int32Field SupplierId;
         public Int32Field OfferId;
-
     }
 }

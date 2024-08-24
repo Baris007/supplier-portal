@@ -8,4 +8,8 @@ export class ItemGrid extends EntityGrid<ItemRow> {
     protected getDialogType() { return ItemDialog; }
     protected getRowDefinition() { return ItemRow; }
     protected getService() { return ItemService.baseUrl; }
+
+    protected getAddButtonCaption() {
+        return "Add New Item";
+    }
 }

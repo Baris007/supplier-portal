@@ -1,4 +1,4 @@
-﻿import { OfferSupplierColumns, OfferSupplierRow, OfferSupplierService } from '@/ServerTypes/Market';
+import { OfferSupplierColumns, OfferSupplierRow, OfferSupplierService } from '@/ServerTypes/Market';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { OfferSupplierDialog } from './OfferSupplierDialog';
 
@@ -8,4 +8,8 @@ export class OfferSupplierGrid extends EntityGrid<OfferSupplierRow> {
     protected getDialogType() { return OfferSupplierDialog; }
     protected getRowDefinition() { return OfferSupplierRow; }
     protected getService() { return OfferSupplierService.baseUrl; }
+
+    protected getAddButtonCaption() {
+        return "Add Supplier";
+    }
 }

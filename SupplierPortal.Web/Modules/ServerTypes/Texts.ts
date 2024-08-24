@@ -89,18 +89,20 @@ namespace SupplierPortal.Texts {
             namespace Offer {
                 export const Detail: string;
                 export const Id: string;
+                export const OfferSupplier: string;
                 export const State: string;
-                export const Supplier: string;
             }
 
             namespace OfferDetail {
                 export const Curency: string;
+                export const Date: string;
                 export const Description: string;
                 export const Id: string;
                 export const ItemId: string;
                 export const OfferId: string;
                 export const Price: string;
                 export const Quantity: string;
+                export const TotalPrice: string;
             }
 
             namespace OfferSupplier {
