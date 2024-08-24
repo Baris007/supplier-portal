@@ -16,6 +16,7 @@ using Newtonsoft.Json.Serialization;
 using Serenity.Extensions.DependencyInjection;
 using Serenity.Localization;
 using Serenity.Navigation;
+using SupplierPortal.Web.Modules.Common.Api;
 using System.Data.Common;
 using System.IO;
 
@@ -129,6 +130,7 @@ public partial class Startup
         services.AddSingleton<IUserAccessor, AppServices.UserAccessor>();
         services.AddSingleton<IUserClaimCreator, DefaultUserClaimCreator>();
         services.AddSingleton<IUserRetrieveService, AppServices.UserRetrieveService>();
+        services.AddSingleton<IAuthService, AuthService>();
         services.AddServiceHandlers();
         services.AddDynamicScripts();
         services.AddCssBundling();
