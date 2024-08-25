@@ -8,6 +8,10 @@ export class OfferGrid extends EntityGrid<OfferRow> {
     protected getDialogType() { return OfferDialog; }
     protected getRowDefinition() { return OfferRow; }
     protected getService() { return OfferService.baseUrl; }
+
+    constructor(props: any) {
+        super(props)
+    }
     protected getAddButtonCaption() {
         return "Add New Offer";
     }
@@ -32,7 +36,7 @@ export class OfferGrid extends EntityGrid<OfferRow> {
             maxWidth: 28
         });
         return columns;
-    }
+    } 
     //protected onClick(e: JQueryEventObject, row: number, cell: number) {
     //    super.onClick(e, row, cell);
 

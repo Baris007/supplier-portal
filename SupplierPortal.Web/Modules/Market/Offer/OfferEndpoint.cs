@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
@@ -14,6 +15,11 @@ namespace SupplierPortal.Market.Endpoints;
 [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
 public class OfferEndpoint : ServiceEndpoint
 {
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    public OfferEndpoint(IHttpContextAccessor httpContextAccessor)
+    {
+        _httpContextAccessor = httpContextAccessor;
+    }
     [HttpPost, AuthorizeCreate(typeof(MyRow))]
     public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request,
         [FromServices] IOfferSaveHandler handler)
@@ -58,5 +64,18 @@ public class OfferEndpoint : ServiceEndpoint
         var bytes = exporter.Export(data, typeof(Columns.OfferColumns), request.ExportColumns);
         return ExcelContentResult.Create(bytes, "OfferList_" +
             DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".xlsx");
+    }
+    public GetContextInfoResponse GetContextInfo(IDbConnection connection, ServiceRequest request)
+    {
+        var userEmail = HttpContext.Session.GetString("UserEmail");
+        var resp = new GetContextInfoResponse()
+        {
+            UserEmail = userEmail
+        };
+        return resp;
+    }
+    public class GetContextInfoResponse : ServiceResponse
+    {
+        public string UserEmail { get; set; }
     }
 }

@@ -115,6 +115,13 @@ public partial class Startup
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("Jwt:Key").Value)),
             };
         });
+        services.AddDistributedMemoryCache(); // Oturum verilerini saklamak için bellek tabanlı bir önbellek ekler
+        services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30); // Oturum süresi
+            options.Cookie.HttpOnly = true; // HTTP istekleri için sadece
+            options.Cookie.IsEssential = true; // GDPR için zorunlu
+        });
 
         services.AddSingleton<IDataMigrations, AppServices.DataMigrations>();
         services.AddSingleton<IElevationHandler, DefaultElevationHandler>();
@@ -189,9 +196,7 @@ public partial class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseAuthentication();
-        app.UseAuthorization();
-
+        app.UseSession(); // Session middleware'ini ekleyin
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute(

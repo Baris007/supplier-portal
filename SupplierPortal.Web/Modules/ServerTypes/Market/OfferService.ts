@@ -1,4 +1,5 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, serviceRequest } from "@serenity-is/corelib";
+﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, ServiceRequest, serviceRequest } from "@serenity-is/corelib";
+import { GetContextInfoResponse } from "./GetContextInfoResponse";
 import { OfferRow } from "./OfferRow";
 
 export namespace OfferService {
@@ -9,13 +10,15 @@ export namespace OfferService {
     export declare function Delete(request: DeleteRequest, onSuccess?: (response: DeleteResponse) => void, opt?: ServiceOptions<any>): PromiseLike<DeleteResponse>;
     export declare function Retrieve(request: RetrieveRequest, onSuccess?: (response: RetrieveResponse<OfferRow>) => void, opt?: ServiceOptions<any>): PromiseLike<RetrieveResponse<OfferRow>>;
     export declare function List(request: ListRequest, onSuccess?: (response: ListResponse<OfferRow>) => void, opt?: ServiceOptions<any>): PromiseLike<ListResponse<OfferRow>>;
+    export declare function GetContextInfo(request: ServiceRequest, onSuccess?: (response: GetContextInfoResponse) => void, opt?: ServiceOptions<any>): PromiseLike<GetContextInfoResponse>;
 
     export const Methods = {
         Create: "Market/Offer/Create",
         Update: "Market/Offer/Update",
         Delete: "Market/Offer/Delete",
         Retrieve: "Market/Offer/Retrieve",
-        List: "Market/Offer/List"
+        List: "Market/Offer/List",
+        GetContextInfo: "Market/Offer/GetContextInfo"
     } as const;
 
     [
@@ -23,7 +26,8 @@ export namespace OfferService {
         'Update', 
         'Delete', 
         'Retrieve', 
-        'List'
+        'List', 
+        'GetContextInfo'
     ].forEach(x => {
         (<any>OfferService)[x] = function (r, s, o) {
             return serviceRequest(baseUrl + '/' + x, r, s, o);
