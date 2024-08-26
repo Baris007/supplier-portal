@@ -7,7 +7,6 @@ namespace SupplierPortal.Market.Columns;
 [BasedOnRow(typeof(SupplierRow), CheckNames = true)]
 public class SupplierColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int Id { get; set; }
     public string CompanyName { get; set; }
     public string Email { get; set; }

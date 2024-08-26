@@ -9,6 +9,9 @@ public class OfferForm
     [OfferSupplierEditor]
     public List<OfferSupplierRow> CompanyName { get; set; }
     public short State { get; set; }
-    [OfferDetailEditor]
+    [ReadOnly(true)]
+    public string Email { get; set; }
+
+    [DisplayName("Detail"), OfferDetailEditor, IgnoreName]
     public List<OfferDetailRow> Detail { get; set; }
 }

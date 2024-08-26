@@ -1,6 +1,6 @@
 import { SupplierColumns, SupplierRow, SupplierService } from '@/ServerTypes/Market';
 import { Decorators, EntityGrid } from '@serenity-is/corelib';
-import { SupplierDialog } from './SupplierDialog';
+import { SupplierDialog } from './SupplierEditDialog';
 
 @Decorators.registerClass('SupplierPortal.Market.SupplierGrid')
 export class SupplierGrid extends EntityGrid<SupplierRow> {

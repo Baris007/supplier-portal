@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -10,10 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Serenity.Extensions.DependencyInjection;
 using Serenity.Localization;
 using Serenity.Navigation;
+using SupplierPortal.Web.Modules.Common.Api;
 using System.Data.Common;
 using System.IO;
 
@@ -92,6 +95,34 @@ public partial class Startup
             loggingBuilder.AddDebug();
         });
 
+        services.AddAuthentication(configureOptions: options =>
+        {
+            //options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            //options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidateActor = true,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                RequireExpirationTime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = Configuration.GetSection("Jwt:Issuer").Value,
+                ValidAudience = Configuration.GetSection("Jwt:Audience").Value,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("Jwt:Key").Value)),
+            };
+        });
+        services.AddDistributedMemoryCache(); // Oturum verilerini saklamak için bellek tabanlı bir önbellek ekler
+        services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30); // Oturum süresi
+            options.Cookie.HttpOnly = true; // HTTP istekleri için sadece
+            options.Cookie.IsEssential = true; // GDPR için zorunlu
+        });
+
         services.AddSingleton<IDataMigrations, AppServices.DataMigrations>();
         services.AddSingleton<IElevationHandler, DefaultElevationHandler>();
         services.AddSingleton<IEmailSender, EmailSender>();
@@ -106,12 +137,14 @@ public partial class Startup
         services.AddSingleton<IUserAccessor, AppServices.UserAccessor>();
         services.AddSingleton<IUserClaimCreator, DefaultUserClaimCreator>();
         services.AddSingleton<IUserRetrieveService, AppServices.UserRetrieveService>();
+        services.AddSingleton<IAuthService, AuthService>();
         services.AddServiceHandlers();
         services.AddDynamicScripts();
         services.AddCssBundling();
         services.AddScriptBundling();
         services.AddUploadStorage();
         services.AddReporting();
+        services.AddControllersWithViews();
     }
 
     public static void InitializeLocalTexts(IServiceProvider services)
@@ -162,6 +195,14 @@ public partial class Startup
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
+
+        app.UseSession(); // Session middleware'ini ekleyin
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+        });
 
         ConfigureTestPipeline?.Invoke(app);
 

@@ -7,6 +7,7 @@ export interface OfferRow {
     CompanyName?: OfferSupplierRow[];
     State?: number;
     Detail?: OfferDetailRow[];
+    Email?: string;
 }
 
 export abstract class OfferRow {

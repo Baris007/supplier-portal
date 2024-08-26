@@ -6,6 +6,7 @@ import { IntegerEditor } from "serenity.corelib";
 export interface OfferForm {
     CompanyName: OfferSupplierEditor;
     State: IntegerEditor;
+    Email: StringEditor;
     Detail: OfferDetailEditor;
 }
 
@@ -21,12 +22,14 @@ export class OfferForm extends PrefixedContext {
 
             var w0 = OfferSupplierEditor;
             var w1 = IntegerEditor;
-            var w2 = OfferDetailEditor;
+            var w2 = StringEditor;
+            var w3 = OfferDetailEditor;
 
             initFormType(OfferForm, [
                 'CompanyName', w0,
                 'State', w1,
-                'Detail', w2
+                'Email', w2,
+                'Detail', w3
             ]);
         }
     }

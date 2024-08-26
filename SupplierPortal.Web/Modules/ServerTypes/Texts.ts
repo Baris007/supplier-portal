@@ -89,7 +89,9 @@ namespace SupplierPortal.Texts {
             namespace Offer {
                 export const CompanyName: string;
                 export const Detail: string;
+                export const Email: string;
                 export const Id: string;
+                export const OfferSupplier: string;
                 export const State: string;
             }
 

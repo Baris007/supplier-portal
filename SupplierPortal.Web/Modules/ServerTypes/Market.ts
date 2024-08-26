@@ -1,4 +1,5 @@
-﻿export * from "./Market/OfferColumns"
+﻿export * from "./Market/GetContextInfoResponse"
+export * from "./Market/OfferColumns"
 export * from "./Market/OfferDetailColumns"
 export * from "./Market/OfferDetailForm"
 export * from "./Market/OfferDetailRow"
