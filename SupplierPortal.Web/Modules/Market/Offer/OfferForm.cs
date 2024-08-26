@@ -6,8 +6,8 @@ namespace SupplierPortal.Market.Forms;
 [BasedOnRow(typeof(OfferRow), CheckNames = true)]
 public class OfferForm
 {
-    [SupplierEditor]
-    public List<SupplierRow> Supplier { get; set; }
+    [OfferSupplierEditor]
+    public List<OfferSupplierRow> CompanyName { get; set; }
     public short State { get; set; }
     [OfferDetailEditor]
     public List<OfferDetailRow> Detail { get; set; }

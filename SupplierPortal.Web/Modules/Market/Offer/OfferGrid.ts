@@ -8,6 +8,9 @@ export class OfferGrid extends EntityGrid<OfferRow> {
     protected getDialogType() { return OfferDialog; }
     protected getRowDefinition() { return OfferRow; }
     protected getService() { return OfferService.baseUrl; }
+    protected getAddButtonCaption() {
+        return "Add New Offer";
+    }
     protected getColumns() {
         var columns = super.getColumns();
         columns.splice(1, 0, {

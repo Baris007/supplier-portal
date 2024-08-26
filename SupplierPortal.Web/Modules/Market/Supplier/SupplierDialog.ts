@@ -1,12 +1,15 @@
 import { SupplierForm, SupplierRow, SupplierService } from '@/ServerTypes/Market';
-import { Decorators } from '@serenity-is/corelib';
-import { GridEditorDialog } from '@serenity-is/extensions';
+import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
-@Decorators.registerClass('SupplierPortal.Market.SupplierDialog')
-export class SupplierDialog extends GridEditorDialog<SupplierRow> {
+@Decorators.panel()
+export class SupplierDialog extends EntityDialog<SupplierRow, any> {
     protected getFormKey() { return SupplierForm.formKey; }
     protected getRowDefinition() { return SupplierRow; }
-    //protected getService() { return SupplierService.baseUrl; }
+    protected getService() { return SupplierService.baseUrl; }
 
     protected form = new SupplierForm(this.idPrefix);
+    protected afterLoadEntity() {
+        super.afterLoadEntity();
+
+    }
 }

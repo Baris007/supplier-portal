@@ -5,6 +5,7 @@ import { OfferSupplierRow } from "./OfferSupplierRow";
 export interface OfferSupplierColumns {
     Id: Column<OfferSupplierRow>;
     SupplierId: Column<OfferSupplierRow>;
+    CompanyName: Column<OfferSupplierRow>;
     OfferId: Column<OfferSupplierRow>;
 }
 
