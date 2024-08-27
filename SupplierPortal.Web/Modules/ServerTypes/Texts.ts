@@ -91,7 +91,6 @@ namespace SupplierPortal.Texts {
                 export const Detail: string;
                 export const Email: string;
                 export const Id: string;
-                export const OfferSupplier: string;
                 export const State: string;
             }
 

@@ -1,5 +1,4 @@
-﻿import { PrefixedContext, initFormType } from "@serenity-is/corelib";
-import { StringEditor, EmailAddressEditor, PasswordEditor } from "serenity.corelib";
+﻿import { StringEditor, EmailAddressEditor, PasswordEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface SignUpForm {
     DisplayName: StringEditor;

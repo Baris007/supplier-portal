@@ -1,5 +1,4 @@
-﻿import { PrefixedContext, initFormType } from "@serenity-is/corelib";
-import { IntegerEditor, LookupEditor, DecimalEditor, StringEditor, DateEditor } from "serenity.corelib";
+﻿import { IntegerEditor, LookupEditor, DecimalEditor, StringEditor, DateEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface OfferDetailForm {
     OfferId: IntegerEditor;

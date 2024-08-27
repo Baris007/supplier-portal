@@ -11,6 +11,9 @@ export class OfferGrid extends EntityGrid<OfferRow> {
     protected getAddButtonCaption() {
         return "Add New Offer";
     }
+    constructor(props: any) {
+        super(props);
+    }
     protected getColumns() {
         var columns = super.getColumns();
         columns.splice(1, 0, {
@@ -32,30 +35,33 @@ export class OfferGrid extends EntityGrid<OfferRow> {
             maxWidth: 28
         });
         return columns;
-    } 
-    //protected onClick(e: JQueryEventObject, row: number, cell: number) {
-    //    super.onClick(e, row, cell);
+    }
+    protected onClick(e: Event, row: number, cell: number) {
+        super.onClick(e, row, cell);
 
-    //    if (e.isDefaultPrevented())
-    //        return;
+        var item = this.itemAt(row) as OfferRow;
+        var target = e.target as HTMLElement;
 
-    //    var item = this.itemAt(row) as OfferRow;
-    //    var target = $(e.target);
+        // Parent elemente erişim
+        if (target.parentElement && target.parentElement.classList.contains('inline-action'))
+            target = target.parentElement;
 
-    //    if (target.parent().hasClass('inline-action'))
-    //        target = target.parent();
-
-    //    if (target.hasClass('inline-action')) {
-    //        e.preventDefault();
-    //        if (target.hasClass('print-invoice')) {
-    //            //ReportHelper.executeBoldReport({
-    //            //    reportName: "teklif",
-    //            //    fileName: "teklif",
-    //            //    extension: 'PDF',
-    //            //    paramNameValues: { Id: item.Id.toString() }
-    //            //});
-    //        }
-
-    //    }
-    //}
+        if (target.classList.contains('inline-action')) {
+            e.preventDefault();
+            if (target.classList.contains('print-invoice')) {
+                // ReportHelper.executeBoldReport({
+                //    reportName: "teklif",
+                //    fileName: "teklif",
+                //    extension: 'PDF',
+                //    paramNameValues: { Id: item.Id.toString() }
+                // });
+            }
+            if (target.classList.contains('mail-save')) {
+                OfferService.SendMail({
+                    EntityId: item.Id
+                    // Diğer parametreler burada eklenebilir
+                });
+            }
+        }
+    }
 }
