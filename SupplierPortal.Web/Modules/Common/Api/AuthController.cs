@@ -37,20 +37,25 @@ namespace SupplierPortal.Web.Modules.Common.Api
             return BadRequest();
         }
         [HttpPost("GenerateLoginLink")]
-        public async Task<IActionResult> GenerateLoginLink(LoginUser user)
+        public IActionResult GenerateLoginLink([FromBody] LoginUser user, [FromQuery] string baseUrl)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (await _authService.Login(user))
+            // Assuming _authService.Login has a synchronous counterpart
+            if (_authService.Login(user).Result) // Or use .GetAwaiter().GetResult() if .Result is not suitable
             {
                 var tokenString = _authService.GenerateTokenString(user);
-                var loginLink = Url.Action("LoginWithToken", "Auth", new { token = tokenString.Token }, Request.Scheme);
+
+                // Construct the URL using the base URL from the parameter
+                var loginLink = $"{baseUrl}/api/Auth/LoginWithToken?token={tokenString.Token}";
+
                 return Ok(new { link = loginLink });
             }
 
             return BadRequest();
         }
+
         [HttpGet("LoginWithToken")]
         public async Task<IActionResult> LoginWithToken(string token)
         {
@@ -66,7 +71,7 @@ namespace SupplierPortal.Web.Modules.Common.Api
             HttpContext.Session.SetString("UserEmail", validateResponse.UserEmail);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
              
-            return Redirect("/Market/Offer#new");
+            return Redirect("/Market/Request#new");
         }
 
     }

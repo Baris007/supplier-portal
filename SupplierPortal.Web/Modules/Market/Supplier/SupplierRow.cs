@@ -10,7 +10,7 @@ namespace SupplierPortal.Market;
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 [ServiceLookupPermission("Administration:General")]
-[LookupScript]
+[LookupScript(Permission = "*")]
 public sealed class SupplierRow : Row<SupplierRow.RowFields>, IIdRow, INameRow
 {
     [DisplayName("Id"), Identity, IdProperty]

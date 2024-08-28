@@ -1,4 +1,4 @@
-﻿export namespace RemoteDataKeys {
+export namespace RemoteDataKeys {
 
     export namespace Administration {
         export const ImplicitPermissions = "Administration.ImplicitPermissions";

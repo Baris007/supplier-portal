@@ -7,6 +7,13 @@ export class RequestDialog extends EntityDialog<RequestRow, any> {
     protected getRowDefinition() { return RequestRow; }
     protected getService() { return RequestService.baseUrl; }
 
+    protected form = new RequestForm(this.idPrefix);
+    protected afterLoadEntity() {
+        super.afterLoadEntity();
+        RequestService.GetContextInfo({}, resp => {
+            this.form.EMail.value = resp.UserEmail;
+        }, {async: false});
+    }
     //protected form = new RequestForm(this.idPrefix);
     //constructor(prop: any) {
     //    super(prop);

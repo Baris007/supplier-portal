@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
@@ -58,5 +59,18 @@ public class RequestEndpoint : ServiceEndpoint
         var bytes = exporter.Export(data, typeof(Columns.RequestColumns), request.ExportColumns);
         return ExcelContentResult.Create(bytes, "RequestList_" +
             DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".xlsx");
+    }
+    public GetContextInfoResponse GetContextInfo(IDbConnection connection, ServiceRequest request)
+    {
+        var userEmail = HttpContext.Session.GetString("UserEmail");
+        var resp = new GetContextInfoResponse()
+        {
+            UserEmail = userEmail
+        };
+        return resp;
+    }
+    public class GetContextInfoResponse : ServiceResponse
+    {
+        public string UserEmail { get; set; }
     }
 }

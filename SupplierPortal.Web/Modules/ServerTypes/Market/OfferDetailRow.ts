@@ -23,10 +23,10 @@ export abstract class OfferDetailRow {
     static getLookup() { return getLookup<OfferDetailRow>('Market.OfferDetail') }
     static async getLookupAsync() { return getLookupAsync<OfferDetailRow>('Market.OfferDetail') }
 
-    static readonly deletePermission = 'Administration:General';
-    static readonly insertPermission = 'Administration:General';
-    static readonly readPermission = 'Administration:General';
-    static readonly updatePermission = 'Administration:General';
+    static readonly deletePermission = 'Marketing:Request';
+    static readonly insertPermission = 'Marketing:Request';
+    static readonly readPermission = 'Marketing:Request';
+    static readonly updatePermission = 'Marketing:Request';
 
     static readonly Fields = fieldsProxy<OfferDetailRow>();
 }

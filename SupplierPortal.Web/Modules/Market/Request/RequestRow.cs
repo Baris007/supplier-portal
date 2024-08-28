@@ -11,9 +11,9 @@ namespace SupplierPortal.Market;
 
 [ConnectionKey("Default"), Module("Market"), TableName("Request")]
 [DisplayName("Request"), InstanceName("Request")]
-[ReadPermission("Administration:General")]
-[ModifyPermission("Administration:General")]
-[ServiceLookupPermission("Administration:General")]
+[ReadPermission("Marketing:Request")]
+[ModifyPermission("Marketing:Request")]
+[ServiceLookupPermission("Marketing:Request")]
 [DataAuditLog]
 public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
 {

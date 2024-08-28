@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
 using Serenity.Web;
 using SupplierPortal.ScheduledEmail;
+using SupplierPortal.Web.Modules.Common.Api;
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -18,12 +21,22 @@ namespace SupplierPortal.Market.Endpoints;
 [Route("Services/Market/Offer/[action]")]
 [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
 public class OfferEndpoint : ServiceEndpoint
-{
+{ 
+
+    private readonly IAuthService _authService;
+    private readonly IUserRetrieveService _userRetriever;
+    private readonly IUserClaimCreator _userClaimCreator;
     private readonly IHttpContextAccessor _httpContextAccessor;
-    public OfferEndpoint(IHttpContextAccessor httpContextAccessor)
+    private readonly IConfiguration _config;
+
+    public OfferEndpoint(IHttpContextAccessor httpContextAccessor, IAuthService authService, IUserRetrieveService userRetriever, IUserClaimCreator userClaimCreator, IConfiguration config)
     {
         _httpContextAccessor = httpContextAccessor;
-    }
+        _authService = authService;
+        _userRetriever = userRetriever;
+        _userClaimCreator = userClaimCreator;
+        _config = config;
+    } 
     [HttpPost, AuthorizeCreate(typeof(MyRow))]
     public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request,
         [FromServices] IOfferSaveHandler handler)
@@ -82,7 +95,18 @@ public class OfferEndpoint : ServiceEndpoint
             {
                 var supplier = uow.Connection.TryById<SupplierRow>(supplierOffer.SupplierId);
                 //var offer = uow.Connection.TryById<MyRow>(request.EntityId);
+                var loginuser = new LoginUser()
+                {
+                    Password = "serenity",
+                    UserEmail= supplier.Email,
+                    Username= "mehmet",
+                };
+                var baseUrl = _config.GetSection("Jwt:Issuer").Value;
+                var authController = new AuthController(_authService, _userRetriever, _userClaimCreator);
+                var loginWithToken = authController.GenerateLoginLink(loginuser, baseUrl);
+
                 var setting = new MailSettings()
+
                 {
                     FromAddress = "b.deniz20031@gmail.com",
                     FromName = "Baris",
@@ -92,7 +116,7 @@ public class OfferEndpoint : ServiceEndpoint
                     Password = "bmxrfbfbmetfrvyk",
                     To = new List<string> { supplier.Email },
                     Subject = "ProjeHakkında",
-                    Body = "MailKomutlarıYazıldı"
+                    Body = loginWithToken.ToJson(),
                 };
                 SendMail1(setting);
             }

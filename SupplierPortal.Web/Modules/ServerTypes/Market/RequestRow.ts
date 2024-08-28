@@ -32,10 +32,10 @@ export abstract class RequestRow {
     static readonly idProperty = 'Id';
     static readonly nameProperty = 'Representatives';
     static readonly localTextPrefix = 'Market.Request';
-    static readonly deletePermission = 'Administration:General';
-    static readonly insertPermission = 'Administration:General';
-    static readonly readPermission = 'Administration:General';
-    static readonly updatePermission = 'Administration:General';
+    static readonly deletePermission = 'Marketing:Request';
+    static readonly insertPermission = 'Marketing:Request';
+    static readonly readPermission = 'Marketing:Request';
+    static readonly updatePermission = 'Marketing:Request';
 
     static readonly Fields = fieldsProxy<RequestRow>();
 }
