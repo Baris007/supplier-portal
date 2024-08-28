@@ -91,7 +91,6 @@ namespace SupplierPortal.Texts {
                 export const Detail: string;
                 export const Email: string;
                 export const Id: string;
-                export const OfferSupplier: string;
                 export const State: string;
             }
 
@@ -113,6 +112,30 @@ namespace SupplierPortal.Texts {
                 export const Id: string;
                 export const OfferId: string;
                 export const SupplierId: string;
+            }
+
+            namespace Request {
+                export const CallNumber: string;
+                export const CompanyName: string;
+                export const Currency: string;
+                export const CurrencyType: string;
+                export const DeliveryTime: string;
+                export const DiscountRate: string;
+                export const DiscountTotal: string;
+                export const EMail: string;
+                export const Exchangerate: string;
+                export const GrossTotal: string;
+                export const Id: string;
+                export const LineDiscount: string;
+                export const OfferDate: string;
+                export const OfferId: string;
+                export const Representatives: string;
+                export const State: string;
+                export const SubTotal: string;
+                export const ToWho: string;
+                export const Total: string;
+                export const ValueDate: string;
+                export const Vat: string;
             }
 
             namespace Supplier {
@@ -235,6 +258,7 @@ namespace SupplierPortal.Texts {
                 Offer: {},
                 OfferDetail: {},
                 OfferSupplier: {},
+                Request: {},
                 Supplier: {}
             }
         },

@@ -1,7 +1,6 @@
 ﻿import { OfferDetailEditor } from "@/Market/OfferDetail/OfferDetailEditor";
 import { OfferSupplierEditor } from "@/Market/OfferSupplier/OfferSupplierEditor";
-import { PrefixedContext, initFormType } from "@serenity-is/corelib";
-import { IntegerEditor } from "serenity.corelib";
+import { IntegerEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface OfferForm {
     CompanyName: OfferSupplierEditor;

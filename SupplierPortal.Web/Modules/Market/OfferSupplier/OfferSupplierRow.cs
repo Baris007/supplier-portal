@@ -10,6 +10,7 @@ namespace SupplierPortal.Market;
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 [LookupScript]
+//[LookupScript(Permission = "*", Expiration = 1)]
 public sealed class OfferSupplierRow : Row<OfferSupplierRow.RowFields>, IIdRow
 {
     const string jSupplier = nameof(jSupplier);

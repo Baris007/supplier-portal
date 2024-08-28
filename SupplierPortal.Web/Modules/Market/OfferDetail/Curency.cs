@@ -1,7 +1,7 @@
 namespace SupplierPortal.Market.Curency;
 
 
-public enum OfferCurencyEnum
+public enum Currency
 {
     [Description("TL")]
     TL = 1,

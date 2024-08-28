@@ -40,4 +40,5 @@ public sealed class OfferRow : Row<OfferRow.RowFields>, IIdRow
 
 
     }
+
 }
