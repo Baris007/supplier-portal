@@ -17,17 +17,17 @@ public sealed class OfferRow : Row<OfferRow.RowFields>, IIdRow
     [DisplayName("Id"), Identity, IdProperty]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
   
-    [DisplayName("Supplier List"), MasterDetailRelation("OfferId")]
+    [DisplayName("Supplier List"), MasterDetailRelation("OfferId"),LookupInclude]
     public List<OfferSupplierRow> CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
 
     [DisplayName("State")]
     public short? State { get => fields.State[this]; set => fields.State[this] = value; }
 
-    [DisplayName("Email")]
+    [DisplayName("Email"),LookupInclude]
     public string Email { get => fields.Email[this]; set => fields.Email[this] = value; }
 
 
-    [DisplayName("Detail"), MasterDetailRelation("OfferId")]
+    [DisplayName("Detail"), MasterDetailRelation("OfferId"), LookupInclude]
     public List<OfferDetailRow> Detail { get => fields.Detail[this]; set => fields.Detail[this] = value; }
 
     public class RowFields : RowFieldsBase

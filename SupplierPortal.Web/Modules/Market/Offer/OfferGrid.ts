@@ -1,16 +1,16 @@
-import { OfferColumns, OfferRow, OfferService } from '@/ServerTypes/Market';
+import { OfferColumns, OfferDetailRow, OfferRow, OfferService, OfferSupplierRow } from '@/ServerTypes/Market';
 import { Decorators, EntityGrid, text, tryGetText } from '@serenity-is/corelib';
 import { OfferDialog } from './OfferDialog';
+import { EmailService } from '../../ServerTypes/ScheduledEmail';
 
 @Decorators.registerClass('SupplierPortal.Market.OfferGrid')
-export class OfferGrid extends EntityGrid<OfferRow> {
+export class OfferGrid extends EntityGrid<OfferRow, any> {
     protected getColumnsKey() { return OfferColumns.columnsKey; }
     protected getDialogType() { return OfferDialog; }
     protected getRowDefinition() { return OfferRow; }
     protected getService() { return OfferService.baseUrl; }
-    protected getAddButtonCaption() {
-        return "Add New Offer";
-    }
+
+
     constructor(props: any) {
         super(props);
     }
@@ -57,10 +57,18 @@ export class OfferGrid extends EntityGrid<OfferRow> {
                 // });
             }
             if (target.classList.contains('mail-save')) {
-                OfferService.SendMail({
-                    EntityId: item.Id
-                    // Diğer parametreler burada eklenebilir
-                });
+                debugger;
+                var detailList = OfferSupplierRow.getLookup().items.filter(q => q.OfferId == item.Id)
+                for (var detail of detailList) {
+                    EmailService.Create({
+                        Entity: {
+                            OfferSupplierId: detail.Id,
+                            IsAutoSended: true,
+                            IsSended: false,
+                            OfferId: item.Id
+                    } })
+                }
+                
             }
         }
     }

@@ -14,14 +14,14 @@ namespace SupplierPortal.Market;
 public sealed class OfferSupplierRow : Row<OfferSupplierRow.RowFields>, IIdRow
 {
     const string jSupplier = nameof(jSupplier);
-    [DisplayName("Id"), Identity, IdProperty]
+    [DisplayName("Id"), Identity, IdProperty,LookupInclude]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
     [DisplayName("Supplier List"), NotNull, ForeignKey(typeof(SupplierRow)), LeftJoin(jSupplier), TextualField(nameof(CompanyName))]
     [LookupEditor(typeof(SupplierRow), Async = true)]
     public int? SupplierId { get => fields.SupplierId[this]; set => fields.SupplierId[this] = value; }
 
-    [DisplayName("Offer Id")]
+    [DisplayName("Offer Id"), LookupInclude]
     public int? OfferId { get => fields.OfferId[this]; set => fields.OfferId[this] = value; }
 
     [DisplayName("Supplier List"), Origin(jSupplier, nameof(SupplierRow.CompanyName))]

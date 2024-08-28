@@ -9,10 +9,10 @@ export class OfferDialog extends EntityDialog<OfferRow, any> {
     protected getService() { return OfferService.baseUrl; }
 
     protected form = new OfferForm(this.idPrefix);
-    protected afterLoadEntity() {
-        super.afterLoadEntity();
-        OfferService.GetContextInfo({}, resp => {
-            this.form.Email.value = resp.UserEmail;
-        }, {async: false});
-    }
+    //protected afterLoadEntity() {
+    //    super.afterLoadEntity();
+    //    OfferService.GetContextInfo({}, resp => {
+    //        this.form.Email.value = resp.UserEmail;
+    //    }, {async: false});
+    //}
 }

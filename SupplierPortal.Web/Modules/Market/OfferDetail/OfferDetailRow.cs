@@ -17,10 +17,10 @@ namespace SupplierPortal.Market;
 public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INameRow
 {
     const string jItem = nameof(jItem);
-    [DisplayName("Id"), Identity, IdProperty]
+    [DisplayName("Id"), Identity, IdProperty,LookupInclude]
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
-    [DisplayName("Offer Id")]
+    [DisplayName("Offer Id"), LookupInclude]
     public int? OfferId { get => fields.OfferId[this]; set => fields.OfferId[this] = value; }
 
     [DisplayName("Quantity"), Size(18), Scale(2)]

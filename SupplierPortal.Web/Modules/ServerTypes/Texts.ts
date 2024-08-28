@@ -144,6 +144,17 @@ namespace SupplierPortal.Texts {
                 export const Id: string;
             }
         }
+
+        namespace ScheduledEmail {
+
+            namespace Email {
+                export const Id: string;
+                export const IsAutoSended: string;
+                export const IsSended: string;
+                export const OfferId: string;
+                export const OfferSupplierId: string;
+            }
+        }
     }
 
     export declare namespace Forms {
@@ -260,6 +271,9 @@ namespace SupplierPortal.Texts {
                 OfferSupplier: {},
                 Request: {},
                 Supplier: {}
+            },
+            ScheduledEmail: {
+                Email: {}
             }
         },
         Forms: {

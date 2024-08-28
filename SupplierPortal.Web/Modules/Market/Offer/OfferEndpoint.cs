@@ -4,8 +4,10 @@ using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
 using Serenity.Web;
+using SupplierPortal.ScheduledEmail;
 using System;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.Net;
 using System.Net.Mail;
@@ -69,22 +71,33 @@ public class OfferEndpoint : ServiceEndpoint
     }
 
     [HttpPost]
-    public ServiceResponse SendMail(IUnitOfWork uow, RetrieveRequest request)
+    public ServiceResponse SendMail(IUnitOfWork uow, SendmailRequest request)
     {
-        var offer = uow.Connection.TryById<MyRow>(request.EntityId);
-        var setting = new MailSettings()
+        
+        foreach (var item in request.EmailList)
         {
-            FromAddress = "b.deniz20031@gmail.com",
-            FromName = "Baris",
-            SmtpHost = "smtp.gmail.com",
-            SmtpPort = 587,
-            EnableSsl = true,
-            Password = "bmxrfbfbmetfrvyk",
-            To = new List<string> { "b.deniz20031@gmail.com","aliasfur08@gmail.com","zekiipekli5934@gmail.com" },
-            Subject = "ProjeHakkında",
-            Body = "MailKomutlarıYazıldı"
-        };
-        SendMail1(setting);
+            //var supplierOffer = uow.Connection.TryFirst<OfferSupplierRow>(item.OfferSupplierId);
+            var supplierOffer = uow.Connection.TryFirst<OfferSupplierRow>(q=>q.SelectTableFields().Where(OfferSupplierRow.Fields.Id==item.OfferSupplierId.Value));
+            if (supplierOffer != null)
+            {
+                var supplier = uow.Connection.TryById<SupplierRow>(supplierOffer.SupplierId);
+                //var offer = uow.Connection.TryById<MyRow>(request.EntityId);
+                var setting = new MailSettings()
+                {
+                    FromAddress = "b.deniz20031@gmail.com",
+                    FromName = "Baris",
+                    SmtpHost = "smtp.gmail.com",
+                    SmtpPort = 587,
+                    EnableSsl = true,
+                    Password = "bmxrfbfbmetfrvyk",
+                    To = new List<string> { supplier.Email },
+                    Subject = "ProjeHakkında",
+                    Body = "MailKomutlarıYazıldı"
+                };
+                SendMail1(setting);
+            }
+                
+        }
         return new ServiceResponse();
 
 
@@ -135,7 +148,10 @@ public class OfferEndpoint : ServiceEndpoint
             return BadRequest("Error sending mail: " + ex.Message);
         }
     }
-
+    public class SendmailRequest: RetrieveRequest
+    { 
+        public List<EmailRow> EmailList { get; set; }
+    }
     public class MailSettings
     {
         public string FromAddress { get; set; }
@@ -148,5 +164,6 @@ public class OfferEndpoint : ServiceEndpoint
         public string Subject { get; set; }
         public string Body { get; set; }
     }
+
 }
 
