@@ -5,6 +5,10 @@ export interface OfferSupplierRow {
     SupplierId?: number;
     OfferId?: number;
     CompanyName?: string;
+    Email?: string;
+    OfficalName?: string;
+    OfficalSurname?: string;
+    CallNumber?: string;
 }
 
 export abstract class OfferSupplierRow {

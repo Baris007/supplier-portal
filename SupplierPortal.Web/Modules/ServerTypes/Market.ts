@@ -1,5 +1,4 @@
-﻿export * from "./Market/Curency.Currency"
-export * from "./Market/GetContextInfoResponse"
+﻿export * from "./Market/GetContextInfoResponse"
 export * from "./Market/OfferColumns"
 export * from "./Market/OfferDetailColumns"
 export * from "./Market/OfferDetailForm"

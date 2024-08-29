@@ -1,4 +1,4 @@
-﻿import { ServiceResponse } from "@serenity-is/corelib";
+﻿import { ServiceResponse } from "../Services/ServiceResponse";
 
 export interface GetContextInfoResponse extends ServiceResponse {
     UserEmail?: string;

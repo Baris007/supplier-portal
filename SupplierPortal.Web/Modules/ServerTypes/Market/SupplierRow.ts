@@ -4,6 +4,9 @@ export interface SupplierRow {
     Id?: number;
     CompanyName?: string;
     Email?: string;
+    OfficalName?: string;
+    OfficalSurname?: string;
+    CallNumber?: string;
 }
 
 export abstract class SupplierRow {

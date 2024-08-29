@@ -1,4 +1,4 @@
-import { OfferForm, OfferRow, OfferService } from '@/ServerTypes/Market';
+import { OfferDetailRow, OfferForm, OfferRow, OfferService } from '@/ServerTypes/Market';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
 @Decorators.panel()

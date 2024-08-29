@@ -1,6 +1,6 @@
 ﻿import { ColumnsBase, fieldsProxy } from "@serenity-is/corelib";
 import { Column } from "@serenity-is/sleekgrid";
-import { State } from "../Modules/Market.Request.Enum.State";
+import { CurrencyType } from "../Modules/Market.Request.Enum.CurrencyType";
 import { RequestRow } from "./RequestRow";
 
 export interface RequestColumns {
@@ -9,8 +9,7 @@ export interface RequestColumns {
     OfferId: Column<RequestRow>;
     OfferDate: Column<RequestRow>;
     ValueDate: Column<RequestRow>;
-    State: Column<RequestRow>;
-    Currency: Column<RequestRow>;
+    RequestState: Column<RequestRow>;
     CurrencyType: Column<RequestRow>;
     Exchangerate: Column<RequestRow>;
     DeliveryTime: Column<RequestRow>;
@@ -25,4 +24,4 @@ export class RequestColumns extends ColumnsBase<RequestRow> {
     static readonly Fields = fieldsProxy<RequestColumns>();
 }
 
-[State]; // referenced types
+[CurrencyType]; // referenced types

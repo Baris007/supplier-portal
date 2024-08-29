@@ -4,7 +4,8 @@ import { OfferRow } from "./OfferRow";
 
 export interface OfferColumns {
     Id: Column<OfferRow>;
-    State: Column<OfferRow>;
+    OfferDate: Column<OfferRow>;
+    ValueDate: Column<OfferRow>;
 }
 
 export class OfferColumns extends ColumnsBase<OfferRow> {

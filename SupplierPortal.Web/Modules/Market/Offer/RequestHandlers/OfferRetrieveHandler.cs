@@ -1,4 +1,4 @@
-﻿using Serenity.Services;
+using Serenity.Services;
 using MyRequest = Serenity.Services.RetrieveRequest;
 using MyResponse = Serenity.Services.RetrieveResponse<SupplierPortal.Market.OfferRow>;
 using MyRow = SupplierPortal.Market.OfferRow;

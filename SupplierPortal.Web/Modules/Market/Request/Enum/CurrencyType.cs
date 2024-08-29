@@ -5,6 +5,6 @@ public enum CurrencyType
     [Description("Döviz Alış")]
     Beklemde = 1,
     [Description("Döviz Satış")]
-    Onaylandi = 2,
+    Onaylandi = 2
    
 }

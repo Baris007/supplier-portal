@@ -1,6 +1,6 @@
 import { Decorators } from "@serenity-is/corelib";
 import { GridEditorBase } from "@serenity-is/extensions";
-import { OfferSupplierColumns, OfferSupplierRow,  SupplierRow } from "@/ServerTypes/Market";
+import { OfferSupplierColumns, OfferSupplierRow, SupplierRow } from "@/ServerTypes/Market";
 import { OfferSupplierDialog } from "./OfferSupplierDialog";
 
 
@@ -32,4 +32,5 @@ export class OfferSupplierEditor extends GridEditorBase<OfferSupplierRow> {
 
         return true;
     }
+
 }

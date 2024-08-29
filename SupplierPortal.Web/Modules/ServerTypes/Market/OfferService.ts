@@ -1,4 +1,13 @@
-﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, ServiceResponse, serviceRequest } from "@serenity-is/corelib";
+﻿import { ServiceOptions, serviceRequest } from "@serenity-is/corelib";
+import { DeleteRequest } from "../Services/DeleteRequest";
+import { DeleteResponse } from "../Services/DeleteResponse";
+import { ListRequest } from "../Services/ListRequest";
+import { ListResponse } from "../Services/ListResponse";
+import { RetrieveRequest } from "../Services/RetrieveRequest";
+import { RetrieveResponse } from "../Services/RetrieveResponse";
+import { SaveRequest } from "../Services/SaveRequest";
+import { SaveResponse } from "../Services/SaveResponse";
+import { ServiceResponse } from "../Services/ServiceResponse";
 import { OfferRow } from "./OfferRow";
 import { SendmailRequest } from "./SendmailRequest";
 

@@ -2,10 +2,12 @@ using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using Serenity.Demo.Northwind;
-using SupplierPortal.Market.Curency;
+
+using SupplierPortal.Market.Enum;
 using SupplierPortal.Modules.Market.Request.Enum;
 using System;
 using System.ComponentModel;
+using static Serenity.Demo.Northwind.MVC.Views;
 
 namespace SupplierPortal.Market;
 
@@ -33,10 +35,13 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
     public DateTime? ValueDate { get => fields.ValueDate[this]; set => fields.ValueDate[this] = value; }
 
     [DisplayName("State")]
-    public State? State { get => fields.State[this]; set => fields.State[this] = value; }
+    public string RequestState { get => fields.RequestState[this]; set => fields.RequestState[this] = value; }
 
-    [DisplayName("Currency")]
-    public Currency? Currency { get => fields.Currency[this]; set => fields.Currency[this] = value; }
+    //[DisplayName("State")]
+    //public State? State { get => fields.State[this]; set => fields.State[this] = value; }
+
+    //[DisplayName("Currency")]
+    //public Currency? Currency { get => fields.Currency[this]; set => fields.Currency[this] = value; }
 
     [DisplayName("Currency Type")]
     public CurrencyType? CurrencyType { get => fields.CurrencyType[this]; set => fields.CurrencyType[this] = value; }
@@ -111,8 +116,9 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
        
         public DateTimeField OfferDate;
         public DateTimeField ValueDate;
-        public EnumField<State> State;
-        public EnumField<Currency> Currency;
+        //public EnumField<Enum.State> State;
+        //public EnumField<Currency> Currency;
+        public StringField RequestState;
         public EnumField<CurrencyType> CurrencyType;
         public DoubleField Exchangerate;
         public DateTimeField DeliveryTime;

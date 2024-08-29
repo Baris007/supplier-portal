@@ -28,7 +28,7 @@ public class SupplierEndpoint : ServiceEndpoint
     {
         return handler.Update(uow, request);
     }
- 
+
     [HttpPost, AuthorizeDelete(typeof(MyRow))]
     public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request,
         [FromServices] ISupplierDeleteHandler handler)

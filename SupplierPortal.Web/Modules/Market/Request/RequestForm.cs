@@ -1,7 +1,7 @@
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Localization;
-using SupplierPortal.Market.Curency;
+using SupplierPortal.Market.Enum;
 using SupplierPortal.Modules.Market.Request.Enum;
 using System;
 
@@ -19,8 +19,9 @@ public class RequestForm
 
     public DateTime OfferDate { get; set; }
     public DateTime ValueDate { get; set; }
-    public State State { get; set; }
-    public Currency Currency { get; set; }
+    public string RequestState { get; set; }
+    //public State State { get; set; }
+    //public Currency Currency { get; set; }
     public CurrencyType CurrencyType { get; set; }
     public double Exchangerate { get; set; }
     public DateTime DeliveryTime { get; set; }

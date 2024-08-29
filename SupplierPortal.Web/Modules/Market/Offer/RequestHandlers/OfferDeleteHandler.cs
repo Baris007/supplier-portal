@@ -1,4 +1,4 @@
-﻿using Serenity.Services;
+using Serenity.Services;
 using MyRequest = Serenity.Services.DeleteRequest;
 using MyResponse = Serenity.Services.DeleteResponse;
 using MyRow = SupplierPortal.Market.OfferRow;
@@ -9,8 +9,11 @@ public interface IOfferDeleteHandler : IDeleteHandler<MyRow, MyRequest, MyRespon
 
 public class OfferDeleteHandler : DeleteRequestHandler<MyRow, MyRequest, MyResponse>, IOfferDeleteHandler
 {
+
     public OfferDeleteHandler(IRequestContext context)
-            : base(context)
+
+        : base(context)
     {
+
     }
 }

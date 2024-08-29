@@ -1,8 +1,12 @@
-﻿import { StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { PrefixedContext, initFormType } from "@serenity-is/corelib";
+import { StringEditor } from "serenity.corelib";
 
 export interface SupplierForm {
     CompanyName: StringEditor;
     Email: StringEditor;
+    OfficalName: StringEditor;
+    OfficalSurname: StringEditor;
+    CallNumber: StringEditor;
 }
 
 export class SupplierForm extends PrefixedContext {
@@ -19,7 +23,10 @@ export class SupplierForm extends PrefixedContext {
 
             initFormType(SupplierForm, [
                 'CompanyName', w0,
-                'Email', w0
+                'Email', w0,
+                'OfficalName', w0,
+                'OfficalSurname', w0,
+                'CallNumber', w0
             ]);
         }
     }

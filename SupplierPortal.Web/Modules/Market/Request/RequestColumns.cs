@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
+using SupplierPortal.Market.Enum;
 using System;
 using System.ComponentModel;
 
@@ -14,8 +15,9 @@ public class RequestColumns
     public int OfferId { get; set; }
     public DateTime OfferDate { get; set; }
     public DateTime ValueDate { get; set; }
-    public short State { get; set; }
-    public short Currency { get; set; }
+    public string RequestState { get; set; }
+    //public short State { get; set; }
+    //public short Currency { get; set; }
     public short CurrencyType { get; set; }
     public double Exchangerate { get; set; }
     public DateTime DeliveryTime { get; set; }

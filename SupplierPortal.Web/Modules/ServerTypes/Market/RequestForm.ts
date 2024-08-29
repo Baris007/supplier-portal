@@ -1,15 +1,13 @@
 ﻿import { OfferDetailEditor } from "@/Market/OfferDetail/OfferDetailEditor";
-import { LookupEditor, DateEditor, EnumEditor, DecimalEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+import { PrefixedContext, initFormType } from "@serenity-is/corelib";
+import { LookupEditor, DateEditor, StringEditor, EnumEditor, DecimalEditor } from "serenity.corelib";
 import { CurrencyType } from "../Modules/Market.Request.Enum.CurrencyType";
-import { State } from "../Modules/Market.Request.Enum.State";
-import { Currency } from "./Curency.Currency";
 
 export interface RequestForm {
     CompanyName: LookupEditor;
     OfferDate: DateEditor;
     ValueDate: DateEditor;
-    State: EnumEditor;
-    Currency: EnumEditor;
+    RequestState: StringEditor;
     CurrencyType: EnumEditor;
     Exchangerate: DecimalEditor;
     DeliveryTime: DateEditor;
@@ -39,35 +37,34 @@ export class RequestForm extends PrefixedContext {
 
             var w0 = LookupEditor;
             var w1 = DateEditor;
-            var w2 = EnumEditor;
-            var w3 = DecimalEditor;
-            var w4 = StringEditor;
+            var w2 = StringEditor;
+            var w3 = EnumEditor;
+            var w4 = DecimalEditor;
             var w5 = OfferDetailEditor;
 
             initFormType(RequestForm, [
                 'CompanyName', w0,
                 'OfferDate', w1,
                 'ValueDate', w1,
-                'State', w2,
-                'Currency', w2,
-                'CurrencyType', w2,
-                'Exchangerate', w3,
+                'RequestState', w2,
+                'CurrencyType', w3,
+                'Exchangerate', w4,
                 'DeliveryTime', w1,
-                'Representatives', w4,
-                'ToWho', w4,
-                'EMail', w4,
-                'CallNumber', w4,
+                'Representatives', w2,
+                'ToWho', w2,
+                'EMail', w2,
+                'CallNumber', w2,
                 'OfferId', w5,
-                'SubTotal', w3,
-                'LineDiscount', w3,
-                'DiscountRate', w3,
-                'DiscountTotal', w3,
-                'GrossTotal', w3,
-                'Vat', w3,
-                'Total', w3
+                'SubTotal', w4,
+                'LineDiscount', w4,
+                'DiscountRate', w4,
+                'DiscountTotal', w4,
+                'GrossTotal', w4,
+                'Vat', w4,
+                'Total', w4
             ]);
         }
     }
 }
 
-[State, Currency, CurrencyType]; // referenced types
+[CurrencyType]; // referenced types

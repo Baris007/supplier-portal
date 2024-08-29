@@ -5,9 +5,10 @@ import { OfferSupplierRow } from "./OfferSupplierRow";
 export interface OfferRow {
     Id?: number;
     CompanyName?: OfferSupplierRow[];
-    State?: number;
     Detail?: OfferDetailRow[];
     Email?: string;
+    OfferDate?: string;
+    ValueDate?: string;
 }
 
 export abstract class OfferRow {

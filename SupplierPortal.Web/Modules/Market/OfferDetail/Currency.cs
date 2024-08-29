@@ -1,4 +1,4 @@
-namespace SupplierPortal.Market.Curency;
+namespace SupplierPortal.Market.Enum;
 
 
 public enum Currency
@@ -9,4 +9,5 @@ public enum Currency
     Dolar = 2,
     [Description("Euro")]
     Euro = 3
+
 }

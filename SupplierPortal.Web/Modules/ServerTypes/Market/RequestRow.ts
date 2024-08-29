@@ -1,7 +1,5 @@
 ﻿import { fieldsProxy } from "@serenity-is/corelib";
 import { CurrencyType } from "../Modules/Market.Request.Enum.CurrencyType";
-import { State } from "../Modules/Market.Request.Enum.State";
-import { Currency } from "./Curency.Currency";
 import { OfferDetailRow } from "./OfferDetailRow";
 
 export interface RequestRow {
@@ -9,8 +7,7 @@ export interface RequestRow {
     CompanyName?: number;
     OfferDate?: string;
     ValueDate?: string;
-    State?: State;
-    Currency?: Currency;
+    RequestState?: string;
     CurrencyType?: CurrencyType;
     Exchangerate?: number;
     DeliveryTime?: string;

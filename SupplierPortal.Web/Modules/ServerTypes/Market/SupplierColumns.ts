@@ -6,6 +6,9 @@ export interface SupplierColumns {
     Id: Column<SupplierRow>;
     CompanyName: Column<SupplierRow>;
     Email: Column<SupplierRow>;
+    OfficalName: Column<SupplierRow>;
+    OfficalSurname: Column<SupplierRow>;
+    CallNumber: Column<SupplierRow>;
 }
 
 export class SupplierColumns extends ColumnsBase<SupplierRow> {

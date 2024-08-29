@@ -1,4 +1,6 @@
 using Serenity.ComponentModel;
+using SupplierPortal.Inventory.Enum;
+using SupplierPortal.Market.Enum;
 using System;
 
 namespace SupplierPortal.Market.Forms;
@@ -10,11 +12,14 @@ public class OfferDetailForm
     [Visible(false)]
     public int OfferId { get; set; }
     public int ItemId { get; set; }
+    public string Kdv { get; set; }
+    public string Unit { get; set; }
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
     public decimal TotalPrice { get; set; }
-    public string Curency { get; set; }
+    //public Currency Curency { get; set; }
     public string Description { get; set; }
     public DateTime Date { get; set; }
+
 
 }

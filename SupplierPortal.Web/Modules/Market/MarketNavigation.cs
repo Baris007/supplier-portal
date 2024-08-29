@@ -1,4 +1,4 @@
-﻿using Serenity.Navigation;
+using Serenity.Navigation;
 using MyPages = SupplierPortal.Market.Pages;
 
 [assembly: NavigationLink(int.MaxValue, "Market/Offer", typeof(MyPages.OfferPage), icon: null)]

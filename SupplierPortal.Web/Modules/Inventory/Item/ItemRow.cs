@@ -1,6 +1,7 @@
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
+using SupplierPortal.Inventory.Enum;
 using System.ComponentModel;
 
 namespace SupplierPortal.Inventory;
@@ -22,14 +23,19 @@ public sealed class ItemRow : Row<ItemRow.RowFields>, IIdRow, INameRow
     [DisplayName("Item Name"), Size(50), NotNull, QuickSearch, NameProperty]
     public string ItemName { get => fields.ItemName[this]; set => fields.ItemName[this] = value; }
 
+    [DisplayName("KDV"), Size(50) , LookupInclude]
+    public string KDV { get => fields.KDV[this]; set => fields.KDV[this] = value; }
 
-
+    [DisplayName("Unit"), Size(50), NotNull, QuickSearch, LookupInclude]
+    public string Unit { get => fields.Unit[this]; set => fields.Unit[this] = value; }
 
     public class RowFields : RowFieldsBase
     {
         public Int32Field Id;
         public StringField ItemCode;
         public StringField ItemName;
+        public StringField KDV;
+        public StringField Unit;
 
 
     }

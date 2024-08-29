@@ -1,4 +1,5 @@
-﻿import { IntegerEditor, BooleanEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { PrefixedContext, initFormType } from "@serenity-is/corelib";
+import { IntegerEditor, BooleanEditor } from "serenity.corelib";
 
 export interface EmailForm {
     OfferSupplierId: IntegerEditor;

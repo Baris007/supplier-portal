@@ -11,9 +11,11 @@ export class OfferDetailDialog extends GridEditorDialog<OfferDetailRow> {
     protected form: OfferDetailForm = new OfferDetailForm(this.idPrefix);
     constructor() {
         super()
-        
-        this.form.Price.changeSelect2(e => {
-            this.form.TotalPrice.value = this.form.Price.value * this.form.Quantity.value
-        })
+
+        this.form.ItemId.changeSelect2((e: any) => {
+/*            debugger*/
+            this.form.Kdv.value = e.originalEvent.added.source.KDV;
+            this.form.Unit.value = e.originalEvent.added.source.Unit;
+        });
     }
 }

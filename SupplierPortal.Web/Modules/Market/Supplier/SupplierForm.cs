@@ -1,4 +1,4 @@
-using Serenity.ComponentModel;
+﻿using Serenity.ComponentModel;
 
 namespace SupplierPortal.Market.Forms;
 
@@ -6,7 +6,9 @@ namespace SupplierPortal.Market.Forms;
 [BasedOnRow(typeof(SupplierRow), CheckNames = true)]
 public class SupplierForm
 {
-
     public string CompanyName { get; set; }
     public string Email { get; set; }
+    public string OfficalName { get; set; }
+    public string OfficalSurname { get; set; }
+    public string CallNumber { get; set; }
 }

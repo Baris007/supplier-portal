@@ -4,6 +4,8 @@ export interface ItemRow {
     Id?: number;
     ItemCode?: string;
     ItemName?: string;
+    KDV?: string;
+    Unit?: string;
 }
 
 export abstract class ItemRow {

@@ -6,6 +6,10 @@ export interface OfferSupplierColumns {
     Id: Column<OfferSupplierRow>;
     SupplierId: Column<OfferSupplierRow>;
     CompanyName: Column<OfferSupplierRow>;
+    Email: Column<OfferSupplierRow>;
+    OfficalName: Column<OfferSupplierRow>;
+    OfficalSurname: Column<OfferSupplierRow>;
+    CallNumber: Column<OfferSupplierRow>;
     OfferId: Column<OfferSupplierRow>;
 }
 
