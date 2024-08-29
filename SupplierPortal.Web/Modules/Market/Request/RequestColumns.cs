@@ -12,7 +12,7 @@ public class RequestColumns
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int Id { get; set; }
     public int CompanyName { get; set; }
-    public int OfferId { get; set; }
+    public int RequestId { get; set; }
     public DateTime OfferDate { get; set; }
     public DateTime ValueDate { get; set; }
     public string RequestState { get; set; }

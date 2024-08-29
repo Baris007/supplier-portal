@@ -31,8 +31,8 @@ public class RequestForm
     public string CallNumber { get; set; }
 
     [FullWidth]
-    [DisplayName("Request"), OfferDetailEditor, IgnoreName]
-    public List<OfferDetailRow> OfferId { get; set; }
+    [DisplayName("Request"), RequestDetailEditor, IgnoreName]
+    public List<RequestDetailRow> RequestId { get; set; }
 
     public decimal SubTotal { get; set; }
     [QuarterWidth]
