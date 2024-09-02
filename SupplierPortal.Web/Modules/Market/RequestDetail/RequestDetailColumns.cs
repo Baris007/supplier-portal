@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System;
 using System.ComponentModel;
 
@@ -9,8 +9,9 @@ namespace SupplierPortal.Market.Columns;
 public class RequestDetailColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    [Visible(false)]
     public int Id { get; set; }
-    public int RequestId { get; set; }
+    
     [EditLink]
     public string ItemName { get; set; }
     public decimal Quantity { get; set; }
@@ -19,4 +20,6 @@ public class RequestDetailColumns
     public short Currency { get; set; }
     public string Description { get; set; }
     public DateTime Date { get; set; }
+    [Visible(false)]
+    public int RequestId { get; set; }
 }

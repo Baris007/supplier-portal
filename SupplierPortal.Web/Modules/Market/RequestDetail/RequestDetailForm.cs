@@ -1,4 +1,6 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
+using SupplierPortal.Inventory;
+using SupplierPortal.Market.Enum;
 using System;
 
 namespace SupplierPortal.Market.Forms;
@@ -7,12 +9,14 @@ namespace SupplierPortal.Market.Forms;
 [BasedOnRow(typeof(RequestDetailRow), CheckNames = true)]
 public class RequestDetailForm
 {
-    public int RequestId { get; set; }
+
+    //public int RequestId { get; set; }
+    [LookupEditor(typeof(ItemRow))]
     public string ItemName { get; set; }
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
     public decimal TotalPrice { get; set; }
-    public short Currency { get; set; }
+    public Currency Currency { get; set; }
     public string Description { get; set; }
     public DateTime Date { get; set; }
 }

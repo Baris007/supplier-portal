@@ -1,6 +1,7 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
+using SupplierPortal.Market.Enum;
 using System;
 using System.ComponentModel;
 
@@ -32,7 +33,7 @@ public sealed class RequestDetailRow : Row<RequestDetailRow.RowFields>, IIdRow, 
     public decimal? TotalPrice { get => fields.TotalPrice[this]; set => fields.TotalPrice[this] = value; }
 
     [DisplayName("Currency")]
-    public short? Currency { get => fields.Currency[this]; set => fields.Currency[this] = value; }
+    public Currency? Currency { get => fields.Currency[this]; set => fields.Currency[this] = value; }
 
     [DisplayName("Description"), Size(10)]
     public string Description { get => fields.Description[this]; set => fields.Description[this] = value; }
@@ -48,7 +49,7 @@ public sealed class RequestDetailRow : Row<RequestDetailRow.RowFields>, IIdRow, 
         public DecimalField Quantity;
         public DecimalField Price;
         public DecimalField TotalPrice;
-        public Int16Field Currency;
+        public EnumField<Currency> Currency;
         public StringField Description;
         public DateTimeField Date;
 

@@ -2,7 +2,7 @@ using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using Serenity.Demo.Northwind;
-
+using SupplierPortal.Market.Columns;
 using SupplierPortal.Market.Enum;
 using SupplierPortal.Modules.Market.Request.Enum;
 using System;
@@ -25,8 +25,8 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
     [DisplayName("Company Name")]
     public int? CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
 
-    [DisplayName("Request"), MasterDetailRelation("OfferId")]
-    public List<OfferDetailRow> OfferId { get => fields.OfferId[this]; set => fields.OfferId[this] = value; }
+    [DisplayName("Request"), MasterDetailRelation(foreignKey:nameof(RequestDetailRow.RequestId),ColumnsType =typeof(RequestDetailColumns))]
+    public List<RequestDetailRow> RequestId { get => fields.RequestId[this]; set => fields.RequestId[this] = value; }
 
     [DisplayName("Offer Date")]
     public DateTime? OfferDate { get => fields.OfferDate[this]; set => fields.OfferDate[this] = value; }
@@ -126,7 +126,7 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
         public StringField ToWho;
         public StringField EMail;
         public StringField CallNumber;
-        public RowListField<OfferDetailRow> OfferId;
+        public RowListField<RequestDetailRow> RequestId;
 
         public DecimalField SubTotal;
         public DecimalField LineDiscount;

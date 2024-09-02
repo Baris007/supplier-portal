@@ -1,11 +1,22 @@
-﻿import { RequestDetailForm, RequestDetailRow, RequestDetailService } from '@/ServerTypes/Market';
-import { Decorators, EntityDialog } from '@serenity-is/corelib';
+import { Decorators } from "@serenity-is/corelib";
+import { GridEditorDialog } from "@serenity-is/extensions";
+import { RequestDetailForm, RequestDetailRow } from "@/ServerTypes/Market";
 
-@Decorators.registerClass('SupplierPortal.Market.RequestDetailDialog')
-export class RequestDetailDialog extends EntityDialog<RequestDetailRow, any> {
+@Decorators.registerClass("SupplierPortal.Market.RequestDetailDialog")
+export class RequestDetailDialog extends GridEditorDialog<RequestDetailRow> {
     protected getFormKey() { return RequestDetailForm.formKey; }
-    protected getRowDefinition() { return RequestDetailRow; }
-    protected getService() { return RequestDetailService.baseUrl; }
+    protected getNameProperty() { return RequestDetailRow.nameProperty; }
+    protected getLocalTextPrefix() { return RequestDetailRow.localTextPrefix; }
 
-    protected form = new RequestDetailForm(this.idPrefix);
-}
+    protected form: RequestDetailForm = new RequestDetailForm(this.idPrefix);
+    constructor() {
+        super();
+        this.form.Price.changeSelect2(e => {
+            this.form.TotalPrice.value = this.form.Price.value * this.form.Quantity.value;
+        });
+    }
+
+
+    }
+
+   
