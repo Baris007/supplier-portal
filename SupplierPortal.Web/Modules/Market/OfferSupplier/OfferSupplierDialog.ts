@@ -9,13 +9,14 @@ export class OfferSupplierDialog extends GridEditorDialog<OfferSupplierRow> {
     protected getLocalTextPrefix() { return OfferSupplierRow.localTextPrefix; }
 
     protected form: OfferSupplierForm = new OfferSupplierForm(this.idPrefix);
+    /*debugger*/
+                //var today = new Date().toISOString().slice(0, 10);
 
     constructor(props: any) {
         super(props);
         
         this.form.SupplierId.changeSelect2((e: any) => {
-            var today = new Date().toISOString().slice(0, 10);
-            /*debugger*/
+
             this.form.Email.value = e.originalEvent.added.source.Email;
             this.form.OfficalName.value = e.originalEvent.added.source.OfficalName;
             this.form.OfficalSurname.value = e.originalEvent.added.source.OfficalSurname;

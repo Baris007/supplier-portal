@@ -9,6 +9,7 @@ namespace SupplierPortal.Market.Forms;
 [BasedOnRow(typeof(OfferDetailRow), CheckNames = true)]
 public class OfferDetailForm
 {
+    [Tab("Offer Detail"), IgnoreName]
     [Visible(false)]
     public int OfferId { get; set; }
     public int ItemId { get; set; }
@@ -17,7 +18,7 @@ public class OfferDetailForm
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
     public decimal TotalPrice { get; set; }
-    //public Currency Curency { get; set; }
+    public Currency Curency { get; set; }
     public string Description { get; set; }
     public DateTime Date { get; set; }
 

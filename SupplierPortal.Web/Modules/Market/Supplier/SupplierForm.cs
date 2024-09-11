@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 
 namespace SupplierPortal.Market.Forms;
 
@@ -11,4 +11,6 @@ public class SupplierForm
     public string OfficalName { get; set; }
     public string OfficalSurname { get; set; }
     public string CallNumber { get; set; }
+
+
 }

@@ -1,4 +1,4 @@
-import { Decorators, TemplatedDialog } from "@serenity-is/corelib";
+import { Decorators, TemplatedDialog, ToolButton } from "@serenity-is/corelib";
 import { format, getRemoteData, notifySuccess, localText } from "@serenity-is/corelib";
 import { RolePermissionService, UserPermissionRow } from "../";
 import { PermissionCheckEditor } from "../UserPermission/PermissionCheckEditor";
@@ -22,6 +22,7 @@ export class RolePermissionDialog extends TemplatedDialog<RolePermissionDialogOp
 
         this.permissions.implicitPermissions = getRemoteData('Administration.ImplicitPermissions');
     }
+    
 
     protected getDialogOptions()  {
         let opt = super.getDialogOptions();
@@ -53,6 +54,8 @@ export class RolePermissionDialog extends TemplatedDialog<RolePermissionDialogOp
         return '<div id="~_Permissions"></div>';
     }
 }
+     
+    
 
 export interface RolePermissionDialogOptions {
     roleID?: number;

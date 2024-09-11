@@ -5,6 +5,7 @@ namespace SupplierPortal.Web.Modules.Common.Api
         public string Username { get; set; }
         public string Password { get; set; }
         public string UserEmail{ get; set; }
+        public string OfferId { get; set; }
 
     }
     public class TokenResponse
@@ -15,5 +16,7 @@ namespace SupplierPortal.Web.Modules.Common.Api
     {
         public string Username { get; set; }
         public string UserEmail { get; set; }
+        public string OfferId { get; set; }
+
     }
 }

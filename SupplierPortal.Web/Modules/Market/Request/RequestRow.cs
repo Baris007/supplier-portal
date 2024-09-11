@@ -23,7 +23,7 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
     public int? Id { get => fields.Id[this]; set => fields.Id[this] = value; }
 
     [DisplayName("Company Name")]
-    public int? CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
+    public string CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
 
     [DisplayName("Request"), MasterDetailRelation(foreignKey:nameof(RequestDetailRow.RequestId),ColumnsType =typeof(RequestDetailColumns))]
     public List<RequestDetailRow> RequestId { get => fields.RequestId[this]; set => fields.RequestId[this] = value; }
@@ -31,17 +31,14 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
     [DisplayName("Offer Date")]
     public DateTime? OfferDate { get => fields.OfferDate[this]; set => fields.OfferDate[this] = value; }
 
-    [DisplayName("Value Date")]
+    [DisplayName("Value Date"), DefaultValue("NOW"), ReadOnly(true)]
     public DateTime? ValueDate { get => fields.ValueDate[this]; set => fields.ValueDate[this] = value; }
 
     [DisplayName("State")]
-    public string RequestState { get => fields.RequestState[this]; set => fields.RequestState[this] = value; }
+    public State? State { get => fields.State[this]; set => fields.State[this] = value; }
 
-    //[DisplayName("State")]
-    //public State? State { get => fields.State[this]; set => fields.State[this] = value; }
-
-    //[DisplayName("Currency")]
-    //public Currency? Currency { get => fields.Currency[this]; set => fields.Currency[this] = value; }
+    [DisplayName("Currency")]
+    public Currency? Currency { get => fields.Currency[this]; set => fields.Currency[this] = value; }
 
     [DisplayName("Currency Type")]
     public CurrencyType? CurrencyType { get => fields.CurrencyType[this]; set => fields.CurrencyType[this] = value; }
@@ -63,7 +60,6 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
 
     [DisplayName("Call Number"), Size(15)]
     public string CallNumber { get => fields.CallNumber[this]; set => fields.CallNumber[this] = value; }
-
 
 
     [DisplayName("Sub Total"), Size(18), Scale(3), DisplayFormat("#,##0.00"), AlignRight]
@@ -112,13 +108,11 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
     public class RowFields : RowFieldsBase
     {
         public Int32Field Id;
-        public Int32Field CompanyName;
-       
+        public StringField CompanyName;
         public DateTimeField OfferDate;
         public DateTimeField ValueDate;
-        //public EnumField<Enum.State> State;
-        //public EnumField<Currency> Currency;
-        public StringField RequestState;
+        public EnumField<State> State;
+        public EnumField<Currency> Currency;
         public EnumField<CurrencyType> CurrencyType;
         public DoubleField Exchangerate;
         public DateTimeField DeliveryTime;
@@ -127,7 +121,6 @@ public sealed class RequestRow : Row<RequestRow.RowFields>, IIdRow, INameRow
         public StringField EMail;
         public StringField CallNumber;
         public RowListField<RequestDetailRow> RequestId;
-
         public DecimalField SubTotal;
         public DecimalField LineDiscount;
         public DecimalField DiscountRate;

@@ -22,7 +22,7 @@ public class OfferDetailColumns
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
     public decimal TotalPrice { get; set; }
-    //public Currency Curency { get; set; }
+    public Currency Curency { get; set; }
     [EditLink]
     public string Description { get; set; }
     [Visible(false)]

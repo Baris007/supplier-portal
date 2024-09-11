@@ -12,7 +12,9 @@ public class RequestDetailForm
 
     //public int RequestId { get; set; }
     [LookupEditor(typeof(ItemRow))]
-    public string ItemName { get; set; }
+    public int ItemId { get; set; }
+    public string Kdv { get; set; }
+    public string Unit { get; set; }
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
     public decimal TotalPrice { get; set; }

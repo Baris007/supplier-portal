@@ -28,6 +28,7 @@ public class OfferEndpoint : ServiceEndpoint
     private readonly IUserClaimCreator _userClaimCreator;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IConfiguration _config;
+    private IUserRetrieveService _Retriever;
 
     public OfferEndpoint(IHttpContextAccessor httpContextAccessor, IAuthService authService, IUserRetrieveService userRetriever, IUserClaimCreator userClaimCreator, IConfiguration config)
     {
@@ -98,11 +99,12 @@ public class OfferEndpoint : ServiceEndpoint
                 var loginuser = new LoginUser()
                 {
                     Password = "serenity",
-                    UserEmail= supplier.Email,
+                    UserEmail= supplier.Email,// supplier email e gelmesi için tedarikçinin emaili
                     Username= "mehmet",
+                    OfferId = supplierOffer.OfferId.ToString(),
                 };
                 var baseUrl = _config.GetSection("Jwt:Issuer").Value;
-                var authController = new AuthController(_authService, _userRetriever, _userClaimCreator);
+                var authController = new AuthController (_authService, _Retriever, _userClaimCreator);
                 var loginWithToken = authController.GenerateLoginLink(loginuser, baseUrl);
 
                 var setting = new MailSettings()

@@ -1,5 +1,6 @@
 ﻿import { SaveRequest, SaveResponse, ServiceOptions, DeleteRequest, DeleteResponse, RetrieveRequest, RetrieveResponse, ListRequest, ListResponse, ServiceRequest, serviceRequest } from "@serenity-is/corelib";
 import { GetContextInfoResponse } from "./GetContextInfoResponse";
+import { GetRequestDetailListResponse } from "./GetRequestDetailListResponse";
 import { RequestRow } from "./RequestRow";
 
 export namespace RequestService {
@@ -10,6 +11,7 @@ export namespace RequestService {
     export declare function Delete(request: DeleteRequest, onSuccess?: (response: DeleteResponse) => void, opt?: ServiceOptions<any>): PromiseLike<DeleteResponse>;
     export declare function Retrieve(request: RetrieveRequest, onSuccess?: (response: RetrieveResponse<RequestRow>) => void, opt?: ServiceOptions<any>): PromiseLike<RetrieveResponse<RequestRow>>;
     export declare function List(request: ListRequest, onSuccess?: (response: ListResponse<RequestRow>) => void, opt?: ServiceOptions<any>): PromiseLike<ListResponse<RequestRow>>;
+    export declare function GetRequestDetailList(request: ServiceRequest, onSuccess?: (response: GetRequestDetailListResponse) => void, opt?: ServiceOptions<any>): PromiseLike<GetRequestDetailListResponse>;
     export declare function GetContextInfo(request: ServiceRequest, onSuccess?: (response: GetContextInfoResponse) => void, opt?: ServiceOptions<any>): PromiseLike<GetContextInfoResponse>;
 
     export const Methods = {
@@ -18,6 +20,7 @@ export namespace RequestService {
         Delete: "Market/Request/Delete",
         Retrieve: "Market/Request/Retrieve",
         List: "Market/Request/List",
+        GetRequestDetailList: "Market/Request/GetRequestDetailList",
         GetContextInfo: "Market/Request/GetContextInfo"
     } as const;
 
@@ -27,6 +30,7 @@ export namespace RequestService {
         'Delete', 
         'Retrieve', 
         'List', 
+        'GetRequestDetailList', 
         'GetContextInfo'
     ].forEach(x => {
         (<any>RequestService)[x] = function (r, s, o) {

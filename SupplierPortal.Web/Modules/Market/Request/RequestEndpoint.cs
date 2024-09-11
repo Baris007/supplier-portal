@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serenity.Abstractions;
 using Serenity.Data;
 using Serenity.Reporting;
 using Serenity.Services;
 using Serenity.Web;
+using SupplierPortal.Web.Modules.Common.Api;
 using System;
 using System.Data;
 using System.Globalization;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 using MyRow = SupplierPortal.Market.RequestRow;
 
 namespace SupplierPortal.Market.Endpoints;
@@ -28,7 +31,7 @@ public class RequestEndpoint : ServiceEndpoint
     {
         return handler.Update(uow, request);
     }
- 
+
     [HttpPost, AuthorizeDelete(typeof(MyRow))]
     public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request,
         [FromServices] IRequestDeleteHandler handler)
@@ -60,6 +63,28 @@ public class RequestEndpoint : ServiceEndpoint
         return ExcelContentResult.Create(bytes, "RequestList_" +
             DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".xlsx");
     }
+    public GetRequestDetailListResponse GetRequestDetailList( IUnitOfWork uow, ServiceRequest request)
+    {
+        var offerId = HttpContext.Session.GetString("OfferId");
+        List<OfferDetailRow> _list = uow.Connection.List<OfferDetailRow>(q => q
+        .SelectTableFields()
+        .SelectNonTableFields()
+        .Where(OfferDetailRow.Fields.OfferId == offerId));
+        List<RequestDetailRow> requestDetailRow = _list
+            .Select(o => new RequestDetailRow
+            {
+                ItemId = o.ItemId,
+                Quantity = o.Quantity,
+                //Currency = o.Curency,
+            })
+            .ToList();
+        var resp = new GetRequestDetailListResponse()
+        {
+            RequestDetailList = requestDetailRow
+        };
+        return resp;
+    }
+
     public GetContextInfoResponse GetContextInfo(IDbConnection connection, ServiceRequest request)
     {
         var userEmail = HttpContext.Session.GetString("UserEmail");
@@ -72,5 +97,11 @@ public class RequestEndpoint : ServiceEndpoint
     public class GetContextInfoResponse : ServiceResponse
     {
         public string UserEmail { get; set; }
+    }
+    public class GetRequestDetailListResponse : ServiceResponse
+    {
+        //public string OfferId { get; set; }
+        public List<RequestDetailRow> RequestDetailList { get; set; }
+
     }
 }

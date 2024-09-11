@@ -1,12 +1,15 @@
-﻿import { OfferDetailEditor } from "@/Market/OfferDetail/OfferDetailEditor";
-import { LookupEditor, DateEditor, StringEditor, EnumEditor, DecimalEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { RequestDetailEditor } from "@/Market/RequestDetail/RequestDetailEditor";
+import { LookupEditor, DateEditor, EnumEditor, DecimalEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 import { CurrencyType } from "../Modules/Market.Request.Enum.CurrencyType";
+import { Currency } from "./Enum.Currency";
+import { State } from "./Enum.State";
 
 export interface RequestForm {
     CompanyName: LookupEditor;
     OfferDate: DateEditor;
     ValueDate: DateEditor;
-    RequestState: StringEditor;
+    State: EnumEditor;
+    Currency: EnumEditor;
     CurrencyType: EnumEditor;
     Exchangerate: DecimalEditor;
     DeliveryTime: DateEditor;
@@ -14,7 +17,7 @@ export interface RequestForm {
     ToWho: StringEditor;
     EMail: StringEditor;
     CallNumber: StringEditor;
-    OfferId: OfferDetailEditor;
+    RequestId: RequestDetailEditor;
     SubTotal: DecimalEditor;
     LineDiscount: DecimalEditor;
     DiscountRate: DecimalEditor;
@@ -36,34 +39,35 @@ export class RequestForm extends PrefixedContext {
 
             var w0 = LookupEditor;
             var w1 = DateEditor;
-            var w2 = StringEditor;
-            var w3 = EnumEditor;
-            var w4 = DecimalEditor;
-            var w5 = OfferDetailEditor;
+            var w2 = EnumEditor;
+            var w3 = DecimalEditor;
+            var w4 = StringEditor;
+            var w5 = RequestDetailEditor;
 
             initFormType(RequestForm, [
                 'CompanyName', w0,
                 'OfferDate', w1,
                 'ValueDate', w1,
-                'RequestState', w2,
-                'CurrencyType', w3,
-                'Exchangerate', w4,
+                'State', w2,
+                'Currency', w2,
+                'CurrencyType', w2,
+                'Exchangerate', w3,
                 'DeliveryTime', w1,
-                'Representatives', w2,
-                'ToWho', w2,
-                'EMail', w2,
-                'CallNumber', w2,
-                'OfferId', w5,
-                'SubTotal', w4,
-                'LineDiscount', w4,
-                'DiscountRate', w4,
-                'DiscountTotal', w4,
-                'GrossTotal', w4,
-                'Vat', w4,
-                'Total', w4
+                'Representatives', w4,
+                'ToWho', w4,
+                'EMail', w4,
+                'CallNumber', w4,
+                'RequestId', w5,
+                'SubTotal', w3,
+                'LineDiscount', w3,
+                'DiscountRate', w3,
+                'DiscountTotal', w3,
+                'GrossTotal', w3,
+                'Vat', w3,
+                'Total', w3
             ]);
         }
     }
 }
 
-[CurrencyType]; // referenced types
+[State, Currency, CurrencyType]; // referenced types

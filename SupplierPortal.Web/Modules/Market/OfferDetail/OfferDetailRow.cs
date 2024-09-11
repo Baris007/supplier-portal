@@ -11,7 +11,7 @@ using static Serenity.Demo.Northwind.MVC.Views;
 namespace SupplierPortal.Market;
 
 [ConnectionKey("Default"), Module("Market"), TableName("OfferDetail")]
-[DisplayName("Offer Detail"), InstanceName("Offer Detail")] 
+[DisplayName("Offer Detail"), InstanceName("Offer Detail")]
 [ReadPermission("Marketing:Request")]
 [ModifyPermission("Marketing:Request")]
 [ServiceLookupPermission("Marketing:Request")]
@@ -38,11 +38,12 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
     [DisplayName("Item Name"), NotNull, ForeignKey(typeof(ItemRow)), LeftJoin(jItem), TextualField(nameof(ItemName))]
     [LookupEditor(typeof(ItemRow), Async = true)]
     public int? ItemId { get => fields.ItemId[this]; set => fields.ItemId[this] = value; }
+
     [DisplayName("Item Name"), Origin(jItem, nameof(ItemRow.ItemName))]
     public string ItemName { get => fields.ItemName[this]; set => fields.ItemName[this] = value; }
 
-    //[DisplayName("Currency"), Size(5)]
-    //public Currency? Curency { get => fields.Curency[this]; set => fields.Curency[this] = value; }
+    [DisplayName("Currency"), Size(5)]
+    public Currency? Curency { get => fields.Curency[this]; set => fields.Curency[this] = value; }
 
     [DisplayName("Date"), Column("Date_")]
     public DateTime? Date { get => fields.Date[this]; set => fields.Date[this] = value; }
@@ -50,10 +51,10 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
     [DisplayName("Total Price"), Size(18), Scale(2), ReadOnly(true)]
     public decimal? TotalPrice { get => fields.TotalPrice[this]; set => fields.TotalPrice[this] = value; }
 
-    [DisplayName("Kdv"), Column("KDV"), Size(15), ReadOnly(true)]
+    [DisplayName("Kdv"), Column("KDV"), Size(15), ReadOnly(true), Origin(jItem, nameof(ItemRow.KDV))]
     public string Kdv { get => fields.Kdv[this]; set => fields.Kdv[this] = value; }
 
-    [DisplayName("Unit"), Size(15), ReadOnly(true)]
+    [DisplayName("Unit"), Size(15), ReadOnly(true), Origin(jItem, nameof(ItemRow.Unit))]
     public string Unit { get => fields.Unit[this]; set => fields.Unit[this] = value; }
 
     public class RowFields : RowFieldsBase
@@ -65,7 +66,7 @@ public sealed class OfferDetailRow : Row<OfferDetailRow.RowFields>, IIdRow, INam
         public StringField Description;
         public Int32Field ItemId;
         public StringField ItemName;
-        //public EnumField<Currency> Curency;
+        public EnumField<Currency> Curency;
         public DateTimeField Date;
         public DecimalField TotalPrice;
         public StringField Kdv;

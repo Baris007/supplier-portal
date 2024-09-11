@@ -10,7 +10,6 @@ export class EmailGrid extends EntityGrid<EmailRow> {
     protected getRowDefinition() { return EmailRow; }
     protected getService() { return EmailService.baseUrl; }
 
-
     protected getButtons(): ToolButton[] {
         let buttons = super.getButtons();
 
@@ -24,7 +23,7 @@ export class EmailGrid extends EntityGrid<EmailRow> {
 
             onClick: e => {
 
-                debugger
+               /* debugger*/
                 var items = this.view.getItems();
                 var detailList = items.filter(q => q.IsSended == false && q.IsAutoSended == true);
                 OfferService.SendMail({

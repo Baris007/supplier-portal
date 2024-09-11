@@ -1,5 +1,5 @@
 import { OfferColumns, OfferDetailRow, OfferRow, OfferService, OfferSupplierRow } from '@/ServerTypes/Market';
-import { Decorators, EntityGrid, text, tryGetText } from '@serenity-is/corelib';
+import { Decorators, EntityGrid, text, ToolButton, tryGetText } from '@serenity-is/corelib';
 import { OfferDialog } from './OfferDialog';
 import { EmailService } from '../../ServerTypes/ScheduledEmail';
 
@@ -10,7 +10,23 @@ export class OfferGrid extends EntityGrid<OfferRow, any> {
     protected getRowDefinition() { return OfferRow; }
     protected getService() { return OfferService.baseUrl; }
 
+    //protected getButtons(): ToolButton[] {
+    //    let buttons = super.getButtons();
 
+    //    //To remove Add button
+    //    //buttons = buttons.filter(f => f.cssClass != 'add-button');
+
+    //    //To create a new button
+    //    buttons.push({
+    //        title: 'Fenerbahce',
+    //        icon: 'fa fa-bell',
+
+    //        onClick: e => {
+    //        }
+    //    });
+
+    //    return buttons
+    //}
     constructor(props: any) {
         super(props);
     }

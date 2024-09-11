@@ -14,14 +14,12 @@ public class RequestForm
     [LookupEditor(typeof(SupplierRow))]
     [QuarterWidth(UntilNext = true)]
 
-    public int CompanyName { get; set; }
+    public string CompanyName { get; set; }
     //public int OfferId { get; set; }
-
     public DateTime OfferDate { get; set; }
     public DateTime ValueDate { get; set; }
-    public string RequestState { get; set; }
-    //public State State { get; set; }
-    //public Currency Currency { get; set; }
+    public State State { get; set; }
+    public Currency Currency { get; set; }
     public CurrencyType CurrencyType { get; set; }
     public double Exchangerate { get; set; }
     public DateTime DeliveryTime { get; set; }

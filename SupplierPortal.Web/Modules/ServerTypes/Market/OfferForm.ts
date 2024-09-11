@@ -1,9 +1,11 @@
 ﻿import { OfferDetailEditor } from "@/Market/OfferDetail/OfferDetailEditor";
 import { OfferSupplierEditor } from "@/Market/OfferSupplier/OfferSupplierEditor";
-import { DateEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+import { EnumEditor, DateEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+import { State } from "./Enum.State";
 
 export interface OfferForm {
     CompanyName: OfferSupplierEditor;
+    State: EnumEditor;
     OfferDate: DateEditor;
     ValueDate: DateEditor;
     Detail: OfferDetailEditor;
@@ -20,15 +22,19 @@ export class OfferForm extends PrefixedContext {
             OfferForm.init = true;
 
             var w0 = OfferSupplierEditor;
-            var w1 = DateEditor;
-            var w2 = OfferDetailEditor;
+            var w1 = EnumEditor;
+            var w2 = DateEditor;
+            var w3 = OfferDetailEditor;
 
             initFormType(OfferForm, [
                 'CompanyName', w0,
-                'OfferDate', w1,
-                'ValueDate', w1,
-                'Detail', w2
+                'State', w1,
+                'OfferDate', w2,
+                'ValueDate', w2,
+                'Detail', w3
             ]);
         }
     }
 }
+
+[State]; // referenced types

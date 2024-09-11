@@ -11,13 +11,12 @@ public class RequestColumns
 {
     [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     public int Id { get; set; }
-    public int CompanyName { get; set; }
+    public string CompanyName { get; set; }
     public int RequestId { get; set; }
     public DateTime OfferDate { get; set; }
     public DateTime ValueDate { get; set; }
-    public string RequestState { get; set; }
-    //public short State { get; set; }
-    //public short Currency { get; set; }
+    public short State { get; set; }
+    public short Currency { get; set; }
     public short CurrencyType { get; set; }
     public double Exchangerate { get; set; }
     public DateTime DeliveryTime { get; set; }

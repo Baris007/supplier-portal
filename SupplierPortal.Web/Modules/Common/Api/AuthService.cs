@@ -58,6 +58,7 @@ namespace SupplierPortal.Web.Modules.Common.Api
             {
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.UserEmail), // Additional claim
+                new Claim(ClaimTypes.PostalCode,user.OfferId),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.Now.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
             };  
 
@@ -81,10 +82,12 @@ namespace SupplierPortal.Web.Modules.Common.Api
                 var principal = tokenHandler.ValidateToken(token, GetTokenValidationParameters(), out var validatedToken);
                 var userEmail = principal.FindFirst(ClaimTypes.Email)?.Value;
                 var userName = principal.FindFirst(ClaimTypes.Name)?.Value;
+                var offerId = principal.FindFirst(ClaimTypes.PostalCode)?.Value;
                 var resp = new ValidateTokenResponse()
                 {
                     Username = userName,
                     UserEmail = userEmail,
+                    OfferId = offerId,
                 };
                 return resp; // Retrieve the user from your data store
             }

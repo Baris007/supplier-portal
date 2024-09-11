@@ -1,4 +1,4 @@
-﻿{
+{
   "Db.Administration.Language.EntityPlural": "Lingue",
   "Db.Administration.Language.EntitySingular": "Lingua",
   "Db.Administration.Language.Id": "Id",
@@ -69,7 +69,7 @@
   "Forms.Membership.Login.SignInButton": "Accedi",
   "Forms.Membership.Login.SignUpButton": "Non hai ancora un account? Iscriviti",
   "Forms.Membership.Login.Username_Placeholder": "Nome utente",
-  "Forms.Membership.ResetPassword.ConfirmPassword": "Conferma password",
+  "Forms.Membership. .ConfirmPassword": "Conferma password",
   "Forms.Membership.ResetPassword.ConfirmPassword_Placeholder": "conferma password",
   "Forms.Membership.ResetPassword.EmailSubject": "Reimposta la tua password SupplierPortal",
   "Forms.Membership.ResetPassword.FormTitle": "Reimposta la password",

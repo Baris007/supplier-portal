@@ -21,7 +21,7 @@ export class OfferDetailEditor extends GridEditorBase<OfferDetailRow> {
         if (!super.validateEntity(row, id))
             return false;
         var itemId = id ?? row[this.getIdProperty()];
-
+        var KDVId = id ?? row[this.getIdProperty()];
         //var KDVId = id ?? row[this.getIdProperty()];
         //ItemRow.getLookupAsync().then(x => {
         //    var KDV = this.view?.getItemById(KDVId);

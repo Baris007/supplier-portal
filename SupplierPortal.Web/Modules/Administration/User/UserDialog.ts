@@ -1,11 +1,13 @@
 import { UserForm, UserRow, UserService } from "../";
 import { UserPermissionDialog } from "../UserPermission/UserPermissionDialog";
-import { Decorators, EditorUtils, EntityDialog } from "@serenity-is/corelib"
+import { Decorators, EditorUtils, EntityDialog, htmlEncode, informationDialog, resolveUrl, serviceCall } from "@serenity-is/corelib"
 import { format, localText } from "@serenity-is/corelib";
 import { Texts } from "@/ServerTypes/Texts";
+import { OfferService } from "../../ServerTypes/Market";
 
 @Decorators.registerClass()
 export class UserDialog extends EntityDialog<UserRow, any> {
+    view: any;
     protected getFormKey() { return UserForm.formKey; }
     protected getIdProperty() { return UserRow.idProperty; }
     protected getIsActiveProperty() { return UserRow.isActiveProperty; }
@@ -14,7 +16,6 @@ export class UserDialog extends EntityDialog<UserRow, any> {
     protected getService() { return UserService.baseUrl; }
 
     protected form = new UserForm(this.idPrefix);
-
     constructor(props?: any) {
         super(props);
 
@@ -32,11 +33,8 @@ export class UserDialog extends EntityDialog<UserRow, any> {
                 return localText(Texts.Validation.PasswordConfirmMismatch);
         });
     }
-
-    protected getToolbarButtons()
-    {
-        let buttons = super.getToolbarButtons();
-
+    protected getToolbarButtons() {
+        let buttons = super.getToolbarButtons();        
         buttons.push({
             title: localText(Texts.Site.UserDialog.EditPermissionsButton),
             cssClass: 'edit-permissions-button',
@@ -49,13 +47,32 @@ export class UserDialog extends EntityDialog<UserRow, any> {
                 }).dialogOpen();
             }
         });
+        //let button = super.getToolbarButtons();
+        buttons.push({
+            title: 'Mail Sender',
+            icon: 'fa fa-bell',
+            //onClick(e => {
+            //    e.preventDefault();
 
+           //    if (!this.validateForm())
+            //        return;
+
+            //    var request = this.getSaveEntity();
+            //    serviceCall({
+            //        url: resolveUrl('~/Account/ForgotPassword'),
+            //        request: request,
+                    //onSuccess: response => {
+                    //    informationDialog(Texts.Forms.Membership.Account.ForgotPassword.Success, () => {
+                    //        window.location.href = resolveUrl('~/');
+            //            });
+            //        }
+            //    })
+        });
         return buttons;
     }
 
     protected updateInterface() {
         super.updateInterface();
-
         this.toolbar.findButton("edit-permissions-button").toggleClass("disabled", this.isNewOrDeleted());
     }
 
@@ -68,4 +85,6 @@ export class UserDialog extends EntityDialog<UserRow, any> {
         this.form.PasswordConfirm.element.toggleClass('required', this.isNew())
             .closest('.field').findFirst('sup').toggle(this.isNew());
     }
-}
+    }
+
+

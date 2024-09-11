@@ -1,7 +1,8 @@
 import { RoleRow, UserColumns, UserRow, UserService } from "@/ServerTypes/Administration";
-import { Decorators, EntityGrid } from "@serenity-is/corelib";
+import { Decorators, EntityGrid, ToolButton } from "@serenity-is/corelib";
 import { Lookup, resolveUrl, tryFirst } from "@serenity-is/corelib";
 import { UserDialog } from "./UserDialog";
+import { OfferService } from "../../ServerTypes/Market";
 
 @Decorators.registerClass()
 export class UserGrid extends EntityGrid<UserRow, any> {
@@ -11,7 +12,6 @@ export class UserGrid extends EntityGrid<UserRow, any> {
     protected getIsActiveProperty() { return UserRow.isActiveProperty; }
     protected getLocalTextPrefix() { return UserRow.localTextPrefix; }
     protected getService() { return UserService.baseUrl; }
-
     constructor(props: any) {
         super(props);
     }

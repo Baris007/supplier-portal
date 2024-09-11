@@ -1,4 +1,4 @@
-﻿import { RetrieveRequest } from "@serenity-is/corelib";
+import { RetrieveRequest } from "@serenity-is/corelib";
 import { EmailRow } from "../ScheduledEmail/EmailRow";
 
 export interface SendmailRequest extends RetrieveRequest {

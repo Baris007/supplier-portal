@@ -61,7 +61,7 @@ namespace SupplierPortal.Web.Modules.Common.Api
         {
             if (string.IsNullOrEmpty(token))
                 return BadRequest("Invalid token");
-             
+
             var validateResponse = _authService.ValidateToken(token);
             if (validateResponse == null)
                 return Unauthorized();
@@ -69,10 +69,12 @@ namespace SupplierPortal.Web.Modules.Common.Api
             var principal = _userClaimCreator.CreatePrincipal(validateResponse.Username, authType: "Token");
 
             HttpContext.Session.SetString("UserEmail", validateResponse.UserEmail);
+            HttpContext.Session.SetString("OfferId", validateResponse.OfferId);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-             
+
             return Redirect("/Market/Request#new");
         }
 
     }
 }
+

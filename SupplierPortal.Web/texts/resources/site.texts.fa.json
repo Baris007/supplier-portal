@@ -1,4 +1,4 @@
-﻿{
+{
   "Db.Administration.Language.EntityPlural": "زبان‌ها",
   "Db.Administration.Language.EntitySingular": "زبان",
   "Db.Administration.Language.Id": "شناسه",
@@ -69,7 +69,7 @@
   "Forms.Membership.Login.SignInButton": "ورود",
   "Forms.Membership.Login.SignUpButton": "هنوز حسابی ندارید؟ ثبت نام کنید",
   "Forms.Membership.Login.Username_Placeholder": "نام کاربری",
-  "Forms.Membership.ResetPassword.ConfirmPassword": "رمز عبور را تایید کنید",
+  "Forms.Membership. .ConfirmPassword": "رمز عبور را تایید کنید",
   "Forms.Membership.ResetPassword.ConfirmPassword_Placeholder": "رمز عبور را تایید کنید",
   "Forms.Membership.ResetPassword.EmailSubject": "رمز عبور SupplierPortal خود را بازنشانی کنید",
   "Forms.Membership.ResetPassword.FormTitle": "تنظیم مجدد رمز عبور",

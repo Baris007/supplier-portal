@@ -11,4 +11,5 @@ public class ItemForm
     public string ItemName { get; set; }
     public KDV KDV { get; set; }
     public Unit Unit { get; set; }
+
 }

@@ -1,4 +1,4 @@
-﻿using Serenity.Extensions.Entities;
+using Serenity.Extensions.Entities;
 
 namespace SupplierPortal.Administration;
 [ConnectionKey("Default"), Module("Administration"), TableName("Users")]
@@ -49,6 +49,9 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
     [AsyncLookupEditor(typeof(RoleRow), Multiple = true)]
     public List<int> Roles { get => fields.Roles[this]; set => fields.Roles[this] = value; }
 
+    [DisplayName("Emaile Şifre Değişikliği"), NotMapped]
+    public bool? ConfirmEmail { get => fields.ConfirmEmail[this]; set => fields.ConfirmEmail[this] = value; }
+
     StringField IDisplayNameRow.DisplayNameField => fields.DisplayName;
     StringField IEmailRow.EmailField => fields.Email;
     Int16Field IIsActiveRow.IsActiveField => fields.IsActive;
@@ -57,6 +60,8 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
 
     public class RowFields : Serenity.Extensions.Entities.LoggingRowFields
     {
+        public BooleanField ConfirmEmail;
+
         public Int32Field UserId;
         public StringField Username;
         public StringField Source;

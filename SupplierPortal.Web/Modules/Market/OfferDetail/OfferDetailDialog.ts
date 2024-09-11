@@ -13,7 +13,7 @@ export class OfferDetailDialog extends GridEditorDialog<OfferDetailRow> {
         super()
 
         this.form.ItemId.changeSelect2((e: any) => {
-/*            debugger*/
+            //debugger
             this.form.Kdv.value = e.originalEvent.added.source.KDV;
             this.form.Unit.value = e.originalEvent.added.source.Unit;
         });

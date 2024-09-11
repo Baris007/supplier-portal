@@ -1,4 +1,4 @@
-﻿namespace SupplierPortal.Administration.Forms;
+namespace SupplierPortal.Administration.Forms;
 
 [FormScript("Administration.User")]
 [BasedOnRow(typeof(UserRow), CheckNames = true)]
@@ -19,4 +19,6 @@ public class UserForm
     [OneWay]
     public string Source { get; set; }
     public bool IsActive { get; set; }
+
+    public bool ConfirmEmail { get; set; }
 }

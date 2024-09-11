@@ -13,7 +13,10 @@ public class RequestDetailColumns
     public int Id { get; set; }
     
     [EditLink]
-    public string ItemName { get; set; }
+    public int ItemId { get; set; }
+    //public string ItemName { get; set; }
+    public string Kdv { get; set; }
+    public string Unit { get; set; }
     public decimal Quantity { get; set; }
     public decimal Price { get; set; }
     public decimal TotalPrice { get; set; }

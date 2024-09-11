@@ -37,6 +37,7 @@ namespace SupplierPortal.Texts {
             }
 
             namespace User {
+                export const ConfirmEmail: string;
                 export const DisplayName: string;
                 export const Email: string;
                 export const InsertDate: string;
@@ -94,10 +95,12 @@ namespace SupplierPortal.Texts {
                 export const Email: string;
                 export const Id: string;
                 export const OfferDate: string;
+                export const State: string;
                 export const ValueDate: string;
             }
 
             namespace OfferDetail {
+                export const Curency: string;
                 export const Date: string;
                 export const Description: string;
                 export const Id: string;
@@ -125,6 +128,7 @@ namespace SupplierPortal.Texts {
             namespace Request {
                 export const CallNumber: string;
                 export const CompanyName: string;
+                export const Currency: string;
                 export const CurrencyType: string;
                 export const DeliveryTime: string;
                 export const DiscountRate: string;
@@ -135,9 +139,9 @@ namespace SupplierPortal.Texts {
                 export const Id: string;
                 export const LineDiscount: string;
                 export const OfferDate: string;
-                export const OfferId: string;
                 export const Representatives: string;
-                export const RequestState: string;
+                export const RequestId: string;
+                export const State: string;
                 export const SubTotal: string;
                 export const ToWho: string;
                 export const Total: string;
@@ -150,11 +154,13 @@ namespace SupplierPortal.Texts {
                 export const Date: string;
                 export const Description: string;
                 export const Id: string;
-                export const ItemName: string;
+                export const ItemId: string;
+                export const Kdv: string;
                 export const Price: string;
                 export const Quantity: string;
                 export const RequestId: string;
                 export const TotalPrice: string;
+                export const Unit: string;
             }
 
             namespace Supplier {
@@ -183,12 +189,32 @@ namespace SupplierPortal.Texts {
 
         namespace Membership {
 
+            namespace ChangePassword {
+                export const FormTitle: string;
+                export const SubmitButton: string;
+                export const Success: string;
+            }
+
+            namespace ForgotPassword {
+                export const FormInfo: string;
+                export const FormTitle: string;
+                export const SubmitButton: string;
+                export const Success: string;
+            }
+
             namespace Login {
                 export const ForgotPassword: string;
                 export const LoginToYourAccount: string;
                 export const RememberMe: string;
                 export const SignInButton: string;
                 export const SignUpButton: string;
+            }
+
+            namespace ResetPassword {
+                export const EmailSubject: string;
+                export const FormTitle: string;
+                export const SubmitButton: string;
+                export const Success: string;
             }
 
             namespace SendActivation {
@@ -262,6 +288,7 @@ namespace SupplierPortal.Texts {
 
     export declare namespace Validation {
         export const AuthenticationError: string;
+        export const CantFindUserWithEmail: string;
         export const CurrentPasswordMismatch: string;
         export const DeleteForeignKeyError: string;
         export const EmailConfirm: string;
@@ -301,7 +328,10 @@ namespace SupplierPortal.Texts {
         },
         Forms: {
             Membership: {
+                ChangePassword: {},
+                ForgotPassword: {},
                 Login: {},
+                ResetPassword: {},
                 SendActivation: {},
                 SignUp: {}
             }
