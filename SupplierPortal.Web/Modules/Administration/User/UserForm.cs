@@ -20,5 +20,6 @@ public class UserForm
     public string Source { get; set; }
     public bool IsActive { get; set; }
 
-    public bool ConfirmEmail { get; set; }
+    [DisplayName("Send Password Reset Email"), NotMapped]
+    public Boolean SendResetEmail { get; set; }
 }

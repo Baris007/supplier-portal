@@ -49,6 +49,7 @@ namespace SupplierPortal.Texts {
                 export const PasswordHash: string;
                 export const PasswordSalt: string;
                 export const Roles: string;
+                export const SendResetEmail: string;
                 export const Source: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;

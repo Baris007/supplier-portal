@@ -1,9 +1,9 @@
 import { UserForm, UserRow, UserService } from "../";
 import { UserPermissionDialog } from "../UserPermission/UserPermissionDialog";
-import { Decorators, EditorUtils, EntityDialog, htmlEncode, informationDialog, resolveUrl, serviceCall } from "@serenity-is/corelib"
+import { Decorators, EditorUtils, EntityDialog, MemberType } from "@serenity-is/corelib";
 import { format, localText } from "@serenity-is/corelib";
 import { Texts } from "@/ServerTypes/Texts";
-import { OfferService } from "../../ServerTypes/Market";
+import { ServiceResponse, serviceCall, resolveUrl } from "@serenity-is/corelib"
 
 @Decorators.registerClass()
 export class UserDialog extends EntityDialog<UserRow, any> {
@@ -32,42 +32,26 @@ export class UserDialog extends EntityDialog<UserRow, any> {
             if (this.form.Password.value != this.form.PasswordConfirm.value)
                 return localText(Texts.Validation.PasswordConfirmMismatch);
         });
+
+        // Registering onSaveSuccess handler
+        this.onSaveSuccess = this.onSaveSuccess.bind(this);
     }
+
     protected getToolbarButtons() {
-        let buttons = super.getToolbarButtons();        
+        let buttons = super.getToolbarButtons();
+
         buttons.push({
             title: localText(Texts.Site.UserDialog.EditPermissionsButton),
             cssClass: 'edit-permissions-button',
             icon: 'fa-lock text-green',
-            onClick: () =>
-            {
+            onClick: () => {
                 new UserPermissionDialog({
                     userID: this.entity.UserId,
                     username: this.entity.Username
                 }).dialogOpen();
             }
         });
-        //let button = super.getToolbarButtons();
-        buttons.push({
-            title: 'Mail Sender',
-            icon: 'fa fa-bell',
-            //onClick(e => {
-            //    e.preventDefault();
 
-           //    if (!this.validateForm())
-            //        return;
-
-            //    var request = this.getSaveEntity();
-            //    serviceCall({
-            //        url: resolveUrl('~/Account/ForgotPassword'),
-            //        request: request,
-                    //onSuccess: response => {
-                    //    informationDialog(Texts.Forms.Membership.Account.ForgotPassword.Success, () => {
-                    //        window.location.href = resolveUrl('~/');
-            //            });
-            //        }
-            //    })
-        });
         return buttons;
     }
 
@@ -85,6 +69,32 @@ export class UserDialog extends EntityDialog<UserRow, any> {
         this.form.PasswordConfirm.element.toggleClass('required', this.isNew())
             .closest('.field').findFirst('sup').toggle(this.isNew());
     }
+
+    onSaveSuccess(response) {
+        // Access the Email field value from the form
+        let emailValue = this.form.Email.value; // Assuming 'Email' is the name of the field
+
+        // Construct the request data, only include necessary fields
+        let requestData = {
+            Email: emailValue
+        };
+
+        console.log(requestData);  // Ensure it logs the correct email
+
+        // Check if the checkbox for sending reset email is checked
+        if (this.form.SendResetEmail.value) {
+            // Make a service call to send the password reset email
+            serviceCall({
+                url: resolveUrl('~/Account/ForgotPassword'),  // Adjusted URL if necessary
+                request: requestData,  // Sending email data to the backend
+                onSuccess: response => {
+                    console.log("Email sent successfully");
+                },
+                onError: response => {
+                    console.error("Error sending email: ", response);
+                }
+            });
+        }
     }
 
-
+}
