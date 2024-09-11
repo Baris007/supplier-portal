@@ -1,4 +1,4 @@
-﻿using Serenity.Extensions.Entities;
+using Serenity.Extensions.Entities;
 
 namespace SupplierPortal.Administration;
 [ConnectionKey("Default"), Module("Administration"), TableName("Users")]
@@ -49,6 +49,11 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
     [AsyncLookupEditor(typeof(RoleRow), Multiple = true)]
     public List<int> Roles { get => fields.Roles[this]; set => fields.Roles[this] = value; }
 
+    [DisplayName("Send Password Reset Email"), NotMapped]
+    public Boolean SendResetEmail { get; set; }
+
+
+
     StringField IDisplayNameRow.DisplayNameField => fields.DisplayName;
     StringField IEmailRow.EmailField => fields.Email;
     Int16Field IIsActiveRow.IsActiveField => fields.IsActive;
@@ -67,7 +72,7 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
         public StringField UserImage;
         public DateTimeField LastDirectoryUpdate;
         public Int16Field IsActive;
-
+        public Int16Field SendResetEmail;
         public StringField Password;
         public StringField PasswordConfirm;
 

@@ -6,6 +6,13 @@ namespace SupplierPortal.Web.Modules.Common.Api
     using Microsoft.AspNetCore.Mvc;
     using Serenity.Abstractions;
     using System.Threading.Tasks;
+    using System.IO;
+    using SupplierPortal.Administration;
+    using Microsoft.AspNetCore.DataProtection;
+    using SupplierPortal.Modules.Membership;
+
+
+
 
     [Route("api/[controller]")]
     [ApiController]
@@ -73,6 +80,64 @@ namespace SupplierPortal.Web.Modules.Common.Api
              
             return Redirect("/Market/Request#new");
         }
+
+        [HttpPost("SendResetEmail")]
+        public ActionResult SendResetEmail([FromBody] ResetEmailRequest request,
+        [FromServices] IEmailSender emailSender,
+        [FromServices] ISiteAbsoluteUrl siteAbsoluteUrl)
+        {
+            return this.UseConnection("Default", connection =>
+            {
+                if (request is null || request.UserId == null)
+                    throw new ArgumentNullException(nameof(request));
+
+                var user = connection.TryFirst<UserRow>(UserRow.Fields.UserId == new ValueCriteria(request.UserId));    
+                if (user == null)
+                    throw new ValidationError("CantFindUserWithId", "Cannot find user with the provided ID.");
+
+                byte[] bytes;
+                using (var ms = new MemoryStream())
+                using (var bw = new BinaryWriter(ms))
+                {
+                    bw.Write(DateTime.UtcNow.AddHours(3).ToBinary());
+                    bw.Write(user.UserId.Value);
+                    bw.Flush();
+                    bytes = ms.ToArray();
+                }
+
+                var token = Convert.ToBase64String(HttpContext.RequestServices.GetDataProtector("ResetPassword").Protect(bytes));
+
+                var externalUrl = siteAbsoluteUrl.GetExternalUrl();
+                var resetLink = UriHelper.Combine(externalUrl, "Account/ResetPassword?t=");
+                resetLink += Uri.EscapeDataString(token);
+
+                var emailModel = new ResetPasswordEmailModel
+                {
+                    //Username = user.Username,
+                    DisplayName = user.DisplayName,
+                    ResetLink = resetLink
+                };
+
+                var emailSubject = "Reset your password";
+                var emailBody = TemplateHelper.RenderViewToString(HttpContext.RequestServices,
+                "/Modules/Membership/Account/ResetPasswordEmail", emailModel);
+
+
+                if (emailSender == null)
+                    throw new ArgumentNullException(nameof(emailSender));
+
+                emailSender.Send(subject: emailSubject, body: emailBody, mailTo: user.Email);
+
+                return new ServiceResponse();
+            });
+        }
+
+        // Define a request model to accept userId
+        public class ResetEmailRequest
+        {
+            public int? UserId { get; set; }
+        }
+
 
     }
 }

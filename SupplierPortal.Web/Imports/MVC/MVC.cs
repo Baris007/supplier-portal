@@ -26,6 +26,11 @@ public static class Views
                 public const string LoginPage = "~/Modules/Membership/Account/Login/LoginPage.cshtml";
             }
 
+            public static class ResetPassword
+            {
+                public const string ResetPasswordEmail = "~/Modules/Membership/Account/ResetPassword/ResetPasswordEmail.cshtml";
+            }
+
             public static class SignUp
             {
                 public const string ActivateEmail = "~/Modules/Membership/Account/SignUp/ActivateEmail.cshtml";

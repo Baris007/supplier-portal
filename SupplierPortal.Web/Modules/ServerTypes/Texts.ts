@@ -48,6 +48,7 @@ namespace SupplierPortal.Texts {
                 export const PasswordHash: string;
                 export const PasswordSalt: string;
                 export const Roles: string;
+                export const SendResetEmail: string;
                 export const Source: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;
@@ -135,8 +136,8 @@ namespace SupplierPortal.Texts {
                 export const Id: string;
                 export const LineDiscount: string;
                 export const OfferDate: string;
-                export const OfferId: string;
                 export const Representatives: string;
+                export const RequestId: string;
                 export const RequestState: string;
                 export const SubTotal: string;
                 export const ToWho: string;

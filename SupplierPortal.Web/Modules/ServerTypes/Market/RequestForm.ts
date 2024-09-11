@@ -1,4 +1,4 @@
-﻿import { OfferDetailEditor } from "@/Market/OfferDetail/OfferDetailEditor";
+﻿import { RequestDetailEditor } from "@/Market/RequestDetail/RequestDetailEditor";
 import { LookupEditor, DateEditor, StringEditor, EnumEditor, DecimalEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 import { CurrencyType } from "../Modules/Market.Request.Enum.CurrencyType";
 
@@ -14,7 +14,7 @@ export interface RequestForm {
     ToWho: StringEditor;
     EMail: StringEditor;
     CallNumber: StringEditor;
-    OfferId: OfferDetailEditor;
+    RequestId: RequestDetailEditor;
     SubTotal: DecimalEditor;
     LineDiscount: DecimalEditor;
     DiscountRate: DecimalEditor;
@@ -39,7 +39,7 @@ export class RequestForm extends PrefixedContext {
             var w2 = StringEditor;
             var w3 = EnumEditor;
             var w4 = DecimalEditor;
-            var w5 = OfferDetailEditor;
+            var w5 = RequestDetailEditor;
 
             initFormType(RequestForm, [
                 'CompanyName', w0,
@@ -53,7 +53,7 @@ export class RequestForm extends PrefixedContext {
                 'ToWho', w2,
                 'EMail', w2,
                 'CallNumber', w2,
-                'OfferId', w5,
+                'RequestId', w5,
                 'SubTotal', w4,
                 'LineDiscount', w4,
                 'DiscountRate', w4,
