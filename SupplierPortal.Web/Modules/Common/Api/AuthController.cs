@@ -92,7 +92,7 @@ namespace SupplierPortal.Web.Modules.Common.Api
                 if (request is null || request.UserId == null)
                     throw new ArgumentNullException(nameof(request));
 
-                var user = connection.TryFirst<UserRow>(UserRow.Fields.UserId == new ValueCriteria(request.UserId));    
+                var user = connection.TryFirst<UserRow>(UserRow.Fields.UserId == new ValueCriteria(request.UserId));
                 if (user == null)
                     throw new ValidationError("CantFindUserWithId", "Cannot find user with the provided ID.");
 

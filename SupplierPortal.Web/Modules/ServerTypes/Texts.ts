@@ -37,7 +37,6 @@ namespace SupplierPortal.Texts {
             }
 
             namespace User {
-                export const ConfirmEmail: string;
                 export const DisplayName: string;
                 export const Email: string;
                 export const InsertDate: string;

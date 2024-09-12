@@ -1,4 +1,4 @@
-﻿namespace SupplierPortal.Administration.Columns;
+namespace SupplierPortal.Administration.Columns;
 
 [ColumnsScript("Administration.User")]
 [BasedOnRow(typeof(UserRow), CheckNames = true)]
